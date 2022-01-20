@@ -1,17 +1,16 @@
 ﻿using ET.Constracts.UserContracts;
-using System.Threading.Tasks;
 
 namespace ET.Domain.UserAgg
 {
    public interface IUserRepository
    {
-      Task<bool> Register(RegisterUser user);
-      Task<bool> Login(LoginUser user);
-      Task<UserVM> GetById(int userId);
-      Task<UserVM> GetByUserName(string userName);
-      Task<bool> ActiveUser(int userId);
-      Task<bool> DeActiveUser(int userId);
-      Task<bool> IsExists(string userName);
-      Task<bool> IsExists(int id);
+      void Register(RegisterUser user);
+      void Login(LoginUser user);
+      UserVM GetById(int userId);
+      UserVM GetByUserName(string userName);
+      bool ActiveUser(int userId);
+      bool DeActiveUser(int userId);
+      bool IsExists(string userName);
+      bool IsExists(int id);
    }
 }

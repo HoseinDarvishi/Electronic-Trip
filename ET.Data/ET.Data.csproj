@@ -54,12 +54,17 @@
     <Compile Include="Context\ETContext.cs" />
     <Compile Include="Mappings\UserMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ET.Constracts\ET.Constracts.csproj">
+      <Project>{307EE4F4-1322-40DE-B027-BC5BBB98571D}</Project>
+      <Name>ET.Constracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ET.Domain\ET.Domain.csproj">
       <Project>{8CD0A369-3E6C-475D-AA34-FEF36D487395}</Project>
       <Name>ET.Domain</Name>

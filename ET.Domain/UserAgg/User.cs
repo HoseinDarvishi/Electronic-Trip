@@ -6,11 +6,12 @@ namespace ET.Domain.UserAgg
    {
       #region Ctor
       private User() { }
-      public User(string fullName ,string userName , string email)
+      public User(string fullName ,string userName , string email,string password)
       {
          FullName = fullName;
          UserName = userName;
          Email = email;
+         Password = password;
          RegisterDate = DateTime.Now;
       }
       #endregion
@@ -18,6 +19,7 @@ namespace ET.Domain.UserAgg
       public int UserId { get; private set; }
       public string FullName { get; private set; }
       public string UserName { get; private set; }
+      public string Password { get; private set; }
       public string Email { get; private set; }
       public bool IsActive { get; private set; }
       public DateTime RegisterDate { get; private set; }
