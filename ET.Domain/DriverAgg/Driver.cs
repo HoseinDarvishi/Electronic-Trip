@@ -25,7 +25,7 @@ namespace ET.Domain.DriverAgg
       public DateTime RegisterDate { get; private set; }
 
       #region Relations
-      public virtual List<Car> Car { get; private set; }
+      public virtual List<Car> Cars { get; private set; }
       #endregion
 
       #region Edit
