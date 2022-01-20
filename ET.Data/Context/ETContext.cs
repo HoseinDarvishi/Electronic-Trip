@@ -1,4 +1,5 @@
-﻿using ET.Domain.UserAgg;
+﻿using ET.Data.Mappings;
+using ET.Domain.UserAgg;
 using System.Data.Entity;
 
 namespace ET.Data.Context
@@ -11,6 +12,7 @@ namespace ET.Data.Context
 
       protected override void OnModelCreating(DbModelBuilder modelBuilder)
       {
+         modelBuilder.Configurations.AddFromAssembly(typeof(UserMapping).Assembly);
          base.OnModelCreating(modelBuilder);
       }
    }
