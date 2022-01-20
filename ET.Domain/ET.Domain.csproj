@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CarAgg\Car.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserAgg\IUserRepository.cs" />
     <Compile Include="UserAgg\User.cs" />

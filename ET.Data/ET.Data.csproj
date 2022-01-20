@@ -69,6 +69,10 @@
       <Project>{8CD0A369-3E6C-475D-AA34-FEF36D487395}</Project>
       <Name>ET.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ET.Tools\ET.Tools.csproj">
+      <Project>{6FB76BA2-B936-4F17-8258-DF3290DEEDE3}</Project>
+      <Name>ET.Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -4,6 +4,7 @@ using ET.Data.Repositories;
 using ET.Domain.UserAgg;
 using ET.Tools;
 using System;
+using System.Collections.Generic;
 
 namespace ET.Service.Services
 {
@@ -29,6 +30,11 @@ namespace ET.Service.Services
             return new OperationResult().Success(Messages.SuccessDeActiveUser);
          }
          return new OperationResult().Failed(Messages.NotFound);
+      }
+
+      public List<UserVM> GetAll(SearchUser search)
+      {
+         return _userRepository.GetAll(search);
       }
 
       public OperationResult Login(LoginUser login)

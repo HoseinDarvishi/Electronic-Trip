@@ -1,7 +1,9 @@
 ﻿using ET.Constracts.UserContracts;
 using ET.Data.Context;
 using ET.Domain.UserAgg;
+using ET.Tools;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -81,6 +83,28 @@ namespace ET.Data.Repositories
       public bool IsExists(int id)
       {
          return _context.Users.Any(x => x.UserId == id);
+      }
+
+      public List<UserVM> GetAll(SearchUser search)
+      {
+         var query = _context.Users.Select(x => new UserVM
+         {
+            UserId = x.UserId,
+            FullName = x.FullName,
+            Email = x.Email,
+            IsActive = x.IsActive,
+            UserName = x.UserName,
+            RegisterDate = x.RegisterDate.ToShamsi()
+         })
+         .AsNoTracking();
+
+         if (!string.IsNullOrWhiteSpace(search.FullNameOrEmailOrUserName))
+            query = query.Where(u=>u.FullName.Contains(search.FullNameOrEmailOrUserName) || u.Email.Contains(search.FullNameOrEmailOrUserName));
+
+         if (!search.ShowWithDeActives)
+            query = query.Where(u => u.IsActive);
+
+         return query.ToList();
       }
    }
 }
