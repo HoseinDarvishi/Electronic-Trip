@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8CD0A369-3E6C-475D-AA34-FEF36D487395}</ProjectGuid>
+    <ProjectGuid>{307EE4F4-1322-40DE-B027-BC5BBB98571D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ET.Domain</RootNamespace>
-    <AssemblyName>ET.Domain</AssemblyName>
+    <RootNamespace>ET.Constracts</RootNamespace>
+    <AssemblyName>ET.Constracts</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,15 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OperationResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserAgg\IUserRepository.cs" />
-    <Compile Include="UserAgg\User.cs" />
+    <Compile Include="UserContracts\RegisterUser.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ET.Constracts\ET.Constracts.csproj">
-      <Project>{307EE4F4-1322-40DE-B027-BC5BBB98571D}</Project>
-      <Name>ET.Constracts</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
