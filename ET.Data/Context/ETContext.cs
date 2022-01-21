@@ -1,5 +1,6 @@
 ﻿using ET.Data.Mappings;
 using ET.Domain.CarAgg;
+using ET.Domain.RoleAgg;
 using ET.Domain.UserAgg;
 using System.Data.Entity;
 
@@ -11,6 +12,7 @@ namespace ET.Data.Context
 
       public virtual DbSet<User> Users { get; set; }
       public virtual DbSet<Car> Cars { get; set; }
+      public virtual DbSet<Role> Roles { get; set; }
 
       protected override void OnModelCreating(DbModelBuilder modelBuilder)
       {

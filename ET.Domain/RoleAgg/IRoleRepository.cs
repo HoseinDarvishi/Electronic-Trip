@@ -5,10 +5,11 @@ namespace ET.Domain.RoleAgg
 {
    public interface IRoleRepository
    {
-      List<Role> GetAll(SearchRole search);
-      Role GetById(int id);
-      Role GetByTitle(string title);
+      List<RoleVM> GetAll(SearchRole search);
+      RoleVM GetById(int id);
+      RoleVM GetByTitle(string title);
       void AddRole(CreateRole role);
       bool IsExsist(string roleTitle);
+      bool IsExsist(int id);
    }
 }
