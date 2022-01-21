@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ET.Domain.CarAgg;
+using System;
+using System.Collections.Generic;
 
 namespace ET.Domain.UserAgg
 {
@@ -25,6 +27,7 @@ namespace ET.Domain.UserAgg
       public DateTime RegisterDate { get; private set; }
 
       #region Relations
+      public virtual List<Car> Cars { get; set; }
       #endregion
 
       #region Edit

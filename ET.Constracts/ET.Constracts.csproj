@@ -43,6 +43,9 @@
   <ItemGroup>
     <Compile Include="OperationResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleConstracts\CreateRole.cs" />
+    <Compile Include="RoleConstracts\EditRole.cs" />
+    <Compile Include="RoleConstracts\SearchRole.cs" />
     <Compile Include="UserContracts\EditUser.cs" />
     <Compile Include="UserContracts\IUserService.cs" />
     <Compile Include="UserContracts\LoginUser.cs" />

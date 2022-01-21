@@ -1,4 +1,4 @@
-﻿using ET.Domain.DriverAgg;
+﻿using ET.Domain.UserAgg;
 using System;
 
 namespace ET.Domain.CarAgg
@@ -28,7 +28,7 @@ namespace ET.Domain.CarAgg
       public bool IsRemoved { get; private set; }
 
       #region Relations
-      public virtual Driver Driver { get; private set; }
+      public virtual User Driver { get; private set; }
       #endregion
 
       #region Edit

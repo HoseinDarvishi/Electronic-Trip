@@ -42,8 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarAgg\Car.cs" />
-    <Compile Include="DriverAgg\Driver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleAgg\IRoleRepository.cs" />
+    <Compile Include="RoleAgg\Role.cs" />
     <Compile Include="UserAgg\IUserRepository.cs" />
     <Compile Include="UserAgg\User.cs" />
   </ItemGroup>

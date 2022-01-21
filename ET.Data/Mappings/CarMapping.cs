@@ -13,7 +13,7 @@ namespace ET.Data.Mappings
          this.Property(c => c.Model).IsRequired();
          this.Property(c => c.Speed).IsRequired();
 
-         this.HasRequired(c => c.Driver).WithMany(d => d.Cars).HasForeignKey(c => c.DriverId);
+         this.HasRequired(x => x.Driver).WithMany(x => x.Cars).HasForeignKey(x => x.DriverId);
       }
    }
 }
