@@ -14,9 +14,10 @@ namespace ET.Service.Services
 
       public OperationResult Active(int id)
       {
-         if (_userRepository.IsExists(id))
+         var user = _userRepository.GetById(id);
+         if (user != null)
          {
-            _userRepository.ActiveUser(id);
+            user.Active();
             return new OperationResult().Success(Messages.SuccessActiveUser);
          }
          return new OperationResult().Failed(Messages.NotFound);
@@ -24,10 +25,11 @@ namespace ET.Service.Services
 
       public OperationResult DeActive(int id)
       {
-         if (_userRepository.IsExists(id))
+         var user = _userRepository.GetById(id);
+         if (user != null)
          {
-            _userRepository.DeActiveUser(id);
-            return new OperationResult().Success(Messages.SuccessDeActiveUser);
+            user.DeActive();
+            return new OperationResult().Success(Messages.SuccessActiveUser);
          }
          return new OperationResult().Failed(Messages.NotFound);
       }

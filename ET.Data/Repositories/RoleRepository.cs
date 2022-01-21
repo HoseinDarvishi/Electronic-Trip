@@ -11,14 +11,14 @@ namespace ET.Data.Repositories
    {
       private ETContext _context = new ETContext();
 
-      public void AddRole(CreateRole role)
+      public void AddRole(string roleTitle)
       {
-         var newRole = new Role(role.RoleTitle);
+         var newRole = new Role(roleTitle);
          _context.Roles.Add(newRole);
          Save();
       }
 
-      public List<RoleVM> GetAll(SearchRole search)
+      public List<RoleVM> GetAll(string roleTitle)
       {
          var query = _context.Roles.Select(x => new RoleVM
          {
@@ -27,32 +27,20 @@ namespace ET.Data.Repositories
          })
          .AsNoTracking();
 
-         if (!string.IsNullOrWhiteSpace(search.RoleTitle))
-            query = query.Where(x => x.RoleTitle.Contains(search.RoleTitle));
+         if (!string.IsNullOrWhiteSpace(roleTitle))
+            query = query.Where(x => x.RoleTitle.Contains(roleTitle));
 
          return query.OrderByDescending(x => x.RoleId).ToList();
       }
 
-      public RoleVM GetById(int id)
+      public Role GetById(int id)
       {
-         return _context.Roles.Select(x => new RoleVM
-         {
-            RoleId = x.RoleId,
-            RoleTitle = x.RoleTitle
-         })
-         .AsNoTracking()
-         .FirstOrDefault(x => x.RoleId == id);
+         return _context.Roles.FirstOrDefault(x => x.RoleId == id);
       }
 
-      public RoleVM GetByTitle(string title)
+      public Role GetByTitle(string title)
       {
-         return _context.Roles.Select(x => new RoleVM
-         {
-            RoleId = x.RoleId,
-            RoleTitle = x.RoleTitle
-         })
-         .AsNoTracking()
-         .FirstOrDefault(x => x.RoleTitle.Contains(title));
+         return _context.Roles.FirstOrDefault(x => x.RoleTitle.Contains(title));
       }
 
       public bool IsExsist(string roleTitle)
