@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Context\ETContext.cs" />
     <Compile Include="Mappings\CarMapping.cs" />
+    <Compile Include="Mappings\RoleMapping.cs" />
     <Compile Include="Mappings\UserMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
