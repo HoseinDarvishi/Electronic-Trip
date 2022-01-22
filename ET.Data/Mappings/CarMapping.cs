@@ -12,6 +12,7 @@ namespace ET.Data.Mappings
          this.Property(c => c.CarName).HasMaxLength(300).IsRequired();
          this.Property(c => c.Model).IsRequired();
          this.Property(c => c.Speed).IsRequired();
+         this.Property(c => c.Color).HasMaxLength(300).IsRequired();
 
          this.HasRequired(x => x.Driver).WithMany(x => x.Cars).HasForeignKey(x => x.DriverId);
       }

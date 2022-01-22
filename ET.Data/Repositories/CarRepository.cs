@@ -2,9 +2,11 @@
 using ET.Data.Context;
 using ET.Domain.CarAgg;
 using ET.Tools;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace ET.Data.Repositories
 {
@@ -14,7 +16,7 @@ namespace ET.Data.Repositories
 
       public void AddCar(CreateCar car)
       {
-         var newCar = new Car(car.CarName, car.Model, car.Speed, car.DriverId);
+         var newCar = new Car(car.CarName, car.Model, car.Speed,car.Color , car.DriverId);
          _context.Cars.Add(newCar);
          Save();
       }
@@ -52,7 +54,7 @@ namespace ET.Data.Repositories
          return query.OrderByDescending(x => x.CarId).ToList();
       }
 
-      public CarVM GetById(int carId)
+      public CarVM GetDetailsById(int carId)
       {
          return _context.Cars.Select(x => new CarVM
          {
@@ -81,6 +83,7 @@ namespace ET.Data.Repositories
                Speed = x.Speed,
                IsRemoved = x.IsRemoved,
                RegisterCar = x.RegisterDate.ToShamsi(),
+               Color = x.Color,
                DriverId = x.DriverId,
                DriverName = x.Driver.FullName
             })
@@ -99,5 +102,15 @@ namespace ET.Data.Repositories
       }
 
       public void Save() => _context.SaveChanges();
+
+      public Car GetById(int carId)
+      {
+         return _context.Cars.Find(carId);
+      }
+
+      public bool IsExsist(Expression<Func<Car, bool>> expression)
+      {
+         return _context.Cars.Any(expression);
+      }
    }
 }

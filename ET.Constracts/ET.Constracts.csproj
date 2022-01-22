@@ -44,6 +44,7 @@
     <Compile Include="CarConstracts\CarVM.cs" />
     <Compile Include="CarConstracts\CreateCar.cs" />
     <Compile Include="CarConstracts\EditCar.cs" />
+    <Compile Include="CarConstracts\ICarService.cs" />
     <Compile Include="CarConstracts\SearchCar.cs" />
     <Compile Include="OperationResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

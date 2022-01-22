@@ -8,11 +8,12 @@ namespace ET.Domain.CarAgg
       #region Ctor
       private Car() { }
 
-      public Car(string carName, int model, int speed,int driverId)
+      public Car(string carName, int model, int speed,string color,int driverId)
       {
          CarName = carName;
          Model = model;
          Speed = speed;
+         Color = color;
          DriverId = driverId;
          IsRemoved = false;
          RegisterDate = DateTime.Now;
@@ -23,6 +24,7 @@ namespace ET.Domain.CarAgg
       public string CarName { get; private set; }
       public int Model { get; private set; }
       public int Speed { get; private set; }
+      public string Color { get; private set; }
       public int DriverId { get; private set; }
       public DateTime RegisterDate { get; private set; }
       public bool IsRemoved { get; private set; }
@@ -34,13 +36,14 @@ namespace ET.Domain.CarAgg
       #region Edit
       public void Remove() => IsRemoved = true;
 
-      public void Restor() => IsRemoved = false;
+      public void Restore() => IsRemoved = false;
 
-      public void Edit(string carName, int model, int speed, int driverId)
+      public void Edit(string carName, int model, int speed,string color ,int driverId)
       {
          CarName = carName;
          Model = model;
          Speed = speed;
+         Color = color;
          DriverId = driverId;
       }
       #endregion

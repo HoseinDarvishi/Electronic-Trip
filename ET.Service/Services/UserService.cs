@@ -51,7 +51,7 @@ namespace ET.Service.Services
             register.Email = register.Email.FixEmail();
             register.Password = register.Password.EncodePassword();
             _userRepository.Register(register);
-            return new OperationResult().Success(Messages.SuccessRegister);
+            return new OperationResult().Success(Messages.SuccessRegisterUser);
          }
          return new OperationResult().Failed(Messages.ExsitsUserName);
       }
