@@ -9,6 +9,7 @@ namespace ET.Domain.RoleAgg
       Role GetById(int id);
       Role GetByTitle(string title);
       void AddRole(string roleTitle);
+      void SetPermissions(int roleId , List<Permission> permissions);
       bool IsExsist(string roleTitle);
       bool IsExsist(int id);
       void Save();

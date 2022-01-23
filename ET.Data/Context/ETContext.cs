@@ -15,7 +15,6 @@ namespace ET.Data.Context
       public virtual DbSet<Car> Cars { get; set; }
       public virtual DbSet<Role> Roles { get; set; }
       public virtual DbSet<Permission> Permissions { get; set; }
-      public virtual DbSet<Role_Permission> Role_Permissions { get; set; }
       public virtual DbSet<Request> Requests { get; set; }
 
       protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -54,5 +54,12 @@ namespace ET.Data.Repositories
       }
 
       public void Save() => _context.SaveChanges();
+
+      public void SetPermissions(int roleId , List<Permission> permissions)
+      {
+         var role = GetById(roleId);
+         role.Permissions = permissions;
+         Save();
+      }
    }
 }

@@ -50,7 +50,6 @@
     <Compile Include="RoleAgg\IRoleRepository.cs" />
     <Compile Include="RoleAgg\Permission.cs" />
     <Compile Include="RoleAgg\Role.cs" />
-    <Compile Include="RoleAgg\Role_Permission.cs" />
     <Compile Include="UserAgg\IUserRepository.cs" />
     <Compile Include="UserAgg\User.cs" />
   </ItemGroup>

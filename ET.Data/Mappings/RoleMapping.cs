@@ -12,7 +12,7 @@ namespace ET.Data.Mappings
          this.Property(x => x.RoleTitle).HasMaxLength(300).IsRequired();
 
          this.HasMany(x => x.Users).WithRequired(x => x.Role).HasForeignKey(x => x.RoleId);
-         this.HasMany(x => x.RolePermissions).WithRequired(x => x.Role).HasForeignKey(x => x.RoleId);
+         this.HasMany(x => x.Permissions).WithRequired(x => x.Role).HasForeignKey(x => x.RoleId);
       }
    }
 }
