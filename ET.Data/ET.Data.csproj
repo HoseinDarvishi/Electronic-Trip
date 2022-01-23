@@ -52,7 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\ETContext.cs" />
+    <Compile Include="Context\PermissionInitializer.cs" />
     <Compile Include="Mappings\CarMapping.cs" />
+    <Compile Include="Mappings\PermissionMapping.cs" />
+    <Compile Include="Mappings\RequestMapping.cs" />
     <Compile Include="Mappings\RoleMapping.cs" />
     <Compile Include="Mappings\UserMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

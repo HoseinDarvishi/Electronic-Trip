@@ -14,7 +14,8 @@ namespace ET.Domain.RoleAgg
       public string RoleTitle { get; private set; }
 
       #region Relations
-      public virtual List<User> Users { get; set; }
+      public virtual List<User> Users { get; private set; }
+      public virtual List<Role_Permission> RolePermissions { get; private set; }
       #endregion
 
       #region Edit

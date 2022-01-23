@@ -12,5 +12,6 @@ namespace ET.Domain.UserAgg
       User GetByUserName(string userName);
       bool IsExists(string userName);
       bool IsExists(int id);
+      void Save();
    }
 }

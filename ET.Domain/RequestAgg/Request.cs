@@ -34,11 +34,11 @@ namespace ET.Domain.RequestAgg
       #endregion
 
       #region Edit
-      void Cancel() => StatusId = (int)OrderStatues.Canceled;
+      public void Cancel() => StatusId = (int)OrderStatues.Canceled;
 
-      void Done() => StatusId = (int)OrderStatues.Done;
+      public void Done() => StatusId = (int)OrderStatues.Done;
 
-      int Status() => StatusId;
+      public int Status() => StatusId;
       #endregion
    }
 

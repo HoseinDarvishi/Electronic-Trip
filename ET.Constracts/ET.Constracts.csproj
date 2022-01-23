@@ -49,6 +49,7 @@
     <Compile Include="OperationResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestContracts\AddRequest.cs" />
+    <Compile Include="RequestContracts\IRequestService.cs" />
     <Compile Include="RequestContracts\RequestVM.cs" />
     <Compile Include="RequestContracts\SearchRequest.cs" />
     <Compile Include="RoleConstracts\EditRole.cs" />

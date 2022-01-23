@@ -18,6 +18,7 @@ namespace ET.Service.Services
          if (user != null)
          {
             user.Active();
+            _userRepository.Save();
             return new OperationResult().Success(Messages.SuccessActiveUser);
          }
          return new OperationResult().Failed(Messages.NotFound);
@@ -29,6 +30,7 @@ namespace ET.Service.Services
          if (user != null)
          {
             user.DeActive();
+            _userRepository.Save();
             return new OperationResult().Success(Messages.SuccessActiveUser);
          }
          return new OperationResult().Failed(Messages.NotFound);
