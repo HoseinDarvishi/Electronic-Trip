@@ -1,0 +1,83 @@
+﻿using ET.Constracts.RequestContracts;
+using ET.Data.Context;
+using ET.Domain.RequestAgg;
+using ET.Tools;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+
+namespace ET.Data.Repositories
+{
+   public class RequestRepository : IRequestRepository
+   {
+      private ETContext _context = new ETContext();
+
+      public string AddRequest(AddRequest request)
+      {
+         var newRequest = new Request(request.UserId, request.CarId, request.Address, request.DetachCode);
+         _context.Requests.Add(newRequest);
+         Save();
+         return newRequest.DetachCode;
+      }
+
+      public List<RequestVM> GetAll(SearchRequest search)
+      {
+         var query = _context.Requests
+            .Include(r => r.Car)
+            .Include(r => r.User)
+            .Select(x => new RequestVM
+            {
+               RequestId = x.RequestId,
+               StatusId = x.StatusId,
+               DetachCode = x.DetachCode,
+               Address = x.Address,
+               RequestDate = x.RequestDate.ToShamsi(),
+               CarId = x.CarId,
+               UserId = x.UserId,
+               CarName = x.Car.CarName,
+               CarColor = x.Car.Color,
+               CarModel = x.Car.Model,
+               UserName = x.User.UserName,
+            })
+            .AsNoTracking();
+
+         if (!string.IsNullOrWhiteSpace(search.DetachCode))
+            query = query.Where(r => r.DetachCode == search.DetachCode);
+
+         if (search.StatusId > 0)
+            query = query.Where(r => r.StatusId == search.StatusId);
+
+         return query.OrderByDescending(r => r.RequestId).ToList();
+      }
+
+      public Request GetById(int id)
+      {
+         return _context.Requests.FirstOrDefault(x => x.RequestId == id);
+      }
+
+      public RequestVM GetDetailById(int id)
+      {
+         return _context.Requests
+            .Include(r=>r.Car)
+            .Include(r=>r.User)
+            .Select(x => new RequestVM
+            {
+               RequestId = x.RequestId,
+               StatusId = x.StatusId,
+               DetachCode = x.DetachCode,
+               Address = x.Address,
+               RequestDate = x.RequestDate.ToShamsi(),
+               CarId = x.CarId,
+               UserId = x.UserId,
+               CarName = x.Car.CarName,
+               CarColor = x.Car.Color,
+               CarModel = x.Car.Model,
+               UserName = x.User.UserName,
+            })
+            .AsNoTracking()
+            .FirstOrDefault(x => x.RequestId == id);
+      }
+
+      public void Save() => _context.SaveChanges();
+   }
+}

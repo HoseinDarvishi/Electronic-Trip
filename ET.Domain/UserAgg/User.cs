@@ -1,4 +1,5 @@
 ﻿using ET.Domain.CarAgg;
+using ET.Domain.RequestAgg;
 using ET.Domain.RoleAgg;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ namespace ET.Domain.UserAgg
 
       #region Relations
       public virtual List<Car> Cars { get; set; }
+      public virtual List<Request> Requests { get; set; }
       public virtual Role Role { get; set; }
       #endregion
 

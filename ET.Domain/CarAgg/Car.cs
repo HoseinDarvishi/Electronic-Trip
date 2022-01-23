@@ -1,5 +1,7 @@
-﻿using ET.Domain.UserAgg;
+﻿using ET.Domain.RequestAgg;
+using ET.Domain.UserAgg;
 using System;
+using System.Collections.Generic;
 
 namespace ET.Domain.CarAgg
 {
@@ -31,6 +33,7 @@ namespace ET.Domain.CarAgg
 
       #region Relations
       public virtual User Driver { get; private set; }
+      public virtual List<Request> Requests { get; private set; }
       #endregion
 
       #region Edit

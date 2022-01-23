@@ -20,7 +20,7 @@ namespace ET.Domain.RequestAgg
       } 
       #endregion
 
-      public int OrderId { get; private set; }
+      public int RequestId { get; private set; }
       public int UserId { get; private set; }
       public int CarId { get; private set; }
       public int StatusId { get; private set; }
