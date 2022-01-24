@@ -8,6 +8,7 @@
       public const string SuccessActiveUser = "کاربر با موفقیت فعال شد";
       public const string SuccessDeActiveUser = "کاربر با موفقیت  غیر فعال شد";
       public const string SuccessRegisterUser = "ثبت نام موفقیت آمیز بود";
+      public const string SuccessLoginUser = "ورود موفقیت آمیز بود";
       public const string ExsitsUserName = "نام کاربری قبلا در سایت ثبت شده است";
       public const string ExsistRoleTitle = "نقشی با همین نام وجود دارد";
       public const string SuccessAddingRole = "نقش با موفقیت اضافه شد";

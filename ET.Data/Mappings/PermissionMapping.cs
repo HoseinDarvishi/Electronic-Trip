@@ -9,7 +9,6 @@ namespace ET.Data.Mappings
       {
          this.ToTable("Permissions");
          this.HasKey<int>(p => p.PermissionId);
-         this.Property(p => p.Name).HasMaxLength(300).IsRequired();
 
          this.HasRequired(p => p.Role).WithMany(r => r.Permissions).HasForeignKey(p => p.RoleId);
       }

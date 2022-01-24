@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ET.Constracts.PermissionContracts;
+using System.Collections.Generic;
 
 namespace ET.Constracts.RoleConstracts
 {
@@ -7,7 +8,6 @@ namespace ET.Constracts.RoleConstracts
       List<RoleVM> GetAll(string roleTitle);
       OperationResult AddRole(string roleTitle);
       OperationResult EditRole(EditRole role);
-      
-      // TODO : SET PERMISSIONS 
+      OperationResult SetPermissions(SetPermissions permissions);
    }
 }
