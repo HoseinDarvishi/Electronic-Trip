@@ -1,7 +1,6 @@
 ﻿using ET.Constracts;
 using ET.Constracts.PermissionContracts;
 using ET.Constracts.RoleConstracts;
-using ET.Data.Repositories;
 using ET.Domain.RoleAgg;
 using ET.Tools;
 using System.Collections.Generic;
@@ -10,7 +9,14 @@ namespace ET.Service.Services
 {
    public class RoleService : IRoleService
    {
-      private IRoleRepository _roleRepo = new RoleRepository();
+      private IRoleRepository _roleRepo;
+
+      #region Ctor
+      public RoleService(IRoleRepository roleRepository)
+      {
+         _roleRepo = roleRepository;
+      } 
+      #endregion
 
       public OperationResult AddRole(string roleTitle)
       {

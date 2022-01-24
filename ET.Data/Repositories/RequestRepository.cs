@@ -10,7 +10,14 @@ namespace ET.Data.Repositories
 {
    public class RequestRepository : IRequestRepository
    {
-      private ETContext _context = new ETContext();
+      private ETContext _context;
+
+      #region Ctor
+      public RequestRepository(ETContext context)
+      {
+         _context = context;
+      } 
+      #endregion
 
       public string AddRequest(AddRequest request)
       {

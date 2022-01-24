@@ -1,6 +1,5 @@
 ﻿using ET.Constracts;
 using ET.Constracts.RequestContracts;
-using ET.Data.Repositories;
 using ET.Domain.RequestAgg;
 using ET.Tools;
 using System.Collections.Generic;
@@ -9,7 +8,14 @@ namespace ET.Service.Services
 {
    public class RequestService : IRequestService
    {
-      private IRequestRepository _requestRepo = new RequestRepository();
+      private IRequestRepository _requestRepo;
+
+      #region Ctor
+      public RequestService(IRequestRepository requestRepository)
+      {
+         _requestRepo = requestRepository;
+      } 
+      #endregion
 
       public OperationResult CancelRequest(int requestId)
       {

@@ -12,7 +12,14 @@ namespace ET.Data.Repositories
 {
    public class CarRepository : ICarRepository
    {
-      private ETContext _context = new ETContext();
+      private ETContext _context;
+
+      #region Ctor
+      public CarRepository(ETContext context)
+      {
+         _context = context;
+      } 
+      #endregion
 
       public void AddCar(CreateCar car)
       {

@@ -9,7 +9,14 @@ namespace ET.Data.Repositories
 {
    public class RoleRepository : IRoleRepository
    {
-      private ETContext _context = new ETContext();
+      private ETContext _context;
+
+      #region Ctor
+      public RoleRepository(ETContext context)
+      {
+         _context = context;
+      } 
+      #endregion
 
       public void AddRole(string roleTitle)
       {

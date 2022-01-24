@@ -11,7 +11,14 @@ namespace ET.Data.Repositories
 {
    public class UserRepository : IUserRepository
    {
-      private ETContext _context = new ETContext();
+      private ETContext _context;
+
+      #region Ctor
+      public UserRepository(ETContext context)
+      {
+         _context = context;
+      } 
+      #endregion
 
       public void Save() => _context.SaveChanges();
 

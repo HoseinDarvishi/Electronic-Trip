@@ -1,6 +1,5 @@
 ﻿using ET.Constracts;
 using ET.Constracts.CarConstracts;
-using ET.Data.Repositories;
 using ET.Domain.CarAgg;
 using ET.Tools;
 using System.Collections.Generic;
@@ -9,7 +8,14 @@ namespace ET.Service.Services
 {
    public class CarService : ICarService
    {
-      private ICarRepository _carRepo = new CarRepository();
+      private ICarRepository _carRepo;
+
+      #region Ctor
+      public CarService(ICarRepository carRepository)
+      {
+         _carRepo = carRepository;
+      } 
+      #endregion
 
       public OperationResult EditCar(EditCar editCar)
       {
