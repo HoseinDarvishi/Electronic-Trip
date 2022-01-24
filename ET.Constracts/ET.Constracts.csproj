@@ -47,6 +47,8 @@
     <Compile Include="CarConstracts\ICarService.cs" />
     <Compile Include="CarConstracts\SearchCar.cs" />
     <Compile Include="OperationResult.cs" />
+    <Compile Include="PermissionContracts\AppPermissions.cs" />
+    <Compile Include="PermissionContracts\IPermissionExposer.cs" />
     <Compile Include="PermissionContracts\PermissionVM.cs" />
     <Compile Include="PermissionContracts\SetPermissions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
