@@ -1,4 +1,5 @@
 ﻿using ET.Data.Mappings;
+using ET.Data.Migrations;
 using ET.Domain.CarAgg;
 using ET.Domain.RequestAgg;
 using ET.Domain.RoleAgg;
@@ -9,8 +10,11 @@ namespace ET.Data.Context
 {
    public class ETContext : DbContext
    {
-      public ETContext(string connectionString) : base(connectionString) { }
-
+      public ETContext() : base("Data Source=.\\SQL2019;Initial Catalog=ElekTrip;Integrated Security=True;") 
+      {
+         Database.SetInitializer(new MigrateDatabaseToLatestVersion<ETContext, Configuration>());
+      }
+      
       public virtual DbSet<User> Users { get; set; }
       public virtual DbSet<Car> Cars { get; set; }
       public virtual DbSet<Role> Roles { get; set; }
@@ -20,9 +24,6 @@ namespace ET.Data.Context
       protected override void OnModelCreating(DbModelBuilder modelBuilder)
       {
          modelBuilder.Configurations.AddFromAssembly(typeof(UserMapping).Assembly);
-
-         Database.SetInitializer(new PermissionInitializer());
-
          base.OnModelCreating(modelBuilder);
       }
    }

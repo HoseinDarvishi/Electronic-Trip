@@ -7,6 +7,8 @@ namespace ET.Service.Services
    {
       public Dictionary<string, List<PermissionVM>> Expose()
       {
+         var AppPermissions = new AppPermissions();
+
          return new Dictionary<string, List<PermissionVM>>
          {
             {

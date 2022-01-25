@@ -1,5 +1,5 @@
-﻿using ET.Domain.RoleAgg;
-using System.Collections.Generic;
+﻿using ET.Constracts.PermissionContracts;
+using ET.Domain.RoleAgg;
 using System.Data.Entity;
 
 namespace ET.Data.Context
@@ -8,9 +8,13 @@ namespace ET.Data.Context
    {
       protected override void Seed(ETContext context)
       {
-         var permissions = new List<Permission>();
-         permissions.ForEach(p => context.Permissions.Add(p));
+         var role = new Role("Admin");
+         var permissions = AppPermissions.GetAll();
+
+         permissions.ForEach(code => role.Permissions.Add(new Permission(code)));
+         context.Roles.Add(role);
          context.SaveChanges();
+
          base.Seed(context);
       }
    }

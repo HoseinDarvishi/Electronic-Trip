@@ -43,7 +43,7 @@ namespace ET.IoC
          builder.RegisterType<RequestService>().As<IRequestService>().InstancePerRequest();
          builder.RegisterType<PermissionExposer>().As<IPermissionExposer>().InstancePerLifetimeScope();
 
-         builder.Register(c => new ETContext(connectionString)).As<ETContext>().InstancePerRequest();
+         builder.Register(c => new ETContext()).As<ETContext>().InstancePerRequest();
       }
    }
 }

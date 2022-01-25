@@ -14,7 +14,7 @@ namespace ET.Data.Mappings
          this.Property(r => r.DetachCode).HasMaxLength(255).IsRequired();
          this.Property(r => r.Address).HasMaxLength(2000).IsRequired();
 
-         this.HasRequired(r => r.Car).WithMany(c => c.Requests).HasForeignKey(r => r.CarId);
+         this.HasRequired(r => r.Car).WithMany(c => c.Requests).HasForeignKey(r => r.CarId).WillCascadeOnDelete(false);
          this.HasRequired(r => r.User).WithMany(c => c.Requests).HasForeignKey(r => r.UserId);
       }
    }
