@@ -56,14 +56,16 @@ namespace ET.Data.Repositories
 
       public List<UserVM> GetAll(SearchUser search)
       {
-         var query = _context.Users.Select(x => new UserVM
+         var query = _context.Users.Include(u=>u.Role).Select(x => new UserVM
          {
             UserId = x.UserId,
             FullName = x.FullName,
             Email = x.Email,
             IsActive = x.IsActive,
             UserName = x.UserName,
-            RegisterDate = x.RegisterDate.ToShamsi()
+            RoleId = x.RoleId,
+            RoleName = x.Role.RoleTitle,
+            RegisterDateEn = x.RegisterDate
          })
          .AsNoTracking();
 
@@ -73,7 +75,11 @@ namespace ET.Data.Repositories
          if (!search.ShowWithDeActives)
             query = query.Where(u => u.IsActive);
 
-         return query.ToList();
+         var list = query.ToList();
+
+         list.ForEach(u => u.RegisterDate = u.RegisterDateEn.ToShamsi());
+
+         return list;
       }
    }
 }

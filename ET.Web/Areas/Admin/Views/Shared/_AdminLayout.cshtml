@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <meta name="viewport" content="width=device-width" />
+   <title>@ViewBag.Title</title>
+   <link rel="stylesheet" href="~/Content/Site.css">
+   <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body class="bg-light">
+   <div class="d-flex flex-column justify-content-between pb-3" style="height: 100vh !important;">
+      <div class="">
+         <div class="bg-primary page-header py-3 shadow px-5 row d-flex justify-content-between text-white">
+            <ul class="bg-light text-dark py-1 shadow rounded rounded-pill">
+               <li><a href="#">ورود</a></li>|
+               <li><a href="#">ثبت نام</a></li>
+            </ul>
+            <ul>
+               <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill"><a href="#">کاربران</a></li>
+               <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill"><a href="#">نقش ها</a></li>
+               <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill"><a href="#">رانندگان</a></li>
+               <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill"><a href="#">خودروها</a></li>
+            </ul>
+         </div>
+         <div>
+            <div class="pt-2">
+
+               @RenderBody()
+
+            </div>
+         </div>
+      </div>
+      <span class="bg-white py-2 px-4 shadow-sm rounded rounded-pill text-center w-auto align-self-center"> 2022 Copyright : Hossein Darvishi </span>
+   </div>
+</body>
+</html>

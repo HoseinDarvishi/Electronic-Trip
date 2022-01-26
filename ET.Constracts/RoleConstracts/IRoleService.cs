@@ -9,5 +9,6 @@ namespace ET.Constracts.RoleConstracts
       OperationResult AddRole(string roleTitle);
       OperationResult EditRole(EditRole role);
       OperationResult SetPermissions(SetPermissions permissions);
+      string GetNameById(int id);
    }
 }

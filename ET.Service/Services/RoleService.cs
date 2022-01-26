@@ -47,6 +47,13 @@ namespace ET.Service.Services
          return _roleRepo.GetAll(roleTitle);
       }
 
+      public string GetNameById(int id)
+      {
+         var role = _roleRepo.GetById(id);
+         if (role != null) return role.RoleTitle;
+         return string.Empty;
+      }
+
       public OperationResult SetPermissions(SetPermissions permissionsVM)
       {
          var role = _roleRepo.GetById(permissionsVM.RoleId);
