@@ -27,12 +27,38 @@ namespace ET.Web.Areas.Admin.Controllers
       #endregion
 
       #region Register
-      public ViewResult Register() => View();
+      public ViewResult Register() 
+      {
+         var register = new RegisterUser { Roles = _roleService.GetAll(string.Empty) };
+         return View(register); 
+      }
 
       [HttpPost]
       public ActionResult Register(RegisterUser register)
       {
-         return View();
+         if (!ModelState.IsValid) return View(register);
+
+         var result = _userService.Register(register);
+
+         TempData["Message"] = result.Message;
+
+         return RedirectToAction("Index" , "Users",new {area="Admin"});
+      }
+      #endregion
+
+      #region Activation
+      public ActionResult Active(int id)
+      {
+         var result = _userService.Active(id);
+         TempData["Message"] = result.Message;
+         return RedirectToAction("Index", "Users", new {area="Admin"});
+      }
+
+      public ActionResult DeActive(int id)
+      {
+         var result = _userService.DeActive(id);
+         TempData["Message"] = result.Message;
+         return RedirectToAction("Index", "Users", new { area = "Admin" });
       }
       #endregion
    }

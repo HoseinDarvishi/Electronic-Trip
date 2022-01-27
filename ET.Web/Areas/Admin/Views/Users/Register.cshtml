@@ -1,0 +1,45 @@
+﻿@model ET.Constracts.UserContracts.RegisterUser
+@{
+   ViewBag.Title = "Register";
+   Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+   Html.SetValidationMessageElement("span");
+}
+
+<div class="mx-auto text-right rounded rounded-2 shadow bg-white p-4 form-container">
+   <h3 class="text-center">ثبت نام</h3>
+   <hr class="my-2">
+   @using (Html.BeginForm("Register", "Users", new { area = "Admin" }, FormMethod.Post))
+   {
+      <div class="form-group">
+         <label class="mb-1 mt-2">نام و نام خانوادگی</label>
+         <input class="form-control px-2" name="fullname" type="text" placeholder="حسین درویشی">
+         @Html.ValidationMessageFor(m => m.FullName)
+      </div>
+      <div class="form-group">
+         <label class="mb-1 mt-2">نام کاربری</label>
+         <input class="form-control px-2" name="username" type="text" placeholder="hosseinDarvishi">
+         @Html.ValidationMessageFor(m => m.UserName)
+      </div>
+      <div class="form-group">
+         <label class="mb-1 mt-2">ایمیل</label>
+         <input class="form-control px-2" name="email" type="text" placeholder="exam@gmail.com">
+         @Html.ValidationMessageFor(m => m.Email)
+      </div>
+      <div class="form-group">
+         <label class="mb-1 mt-2">رمز عبور</label>
+         <input class="form-control px-2" name="password" type="password" placeholder="******">
+         @Html.ValidationMessageFor(m => m.Password)
+      </div>
+      <div class="form-group">
+         <label class="mb-1 mt-2">تکرار رمز عبور</label>
+         <input class="form-control px-2" name="repassword" type="password" placeholder="******">
+         @Html.ValidationMessageFor(m => m.RePassword)
+      </div>
+      <div class="form-group">
+         <label class="mb-1 mt-2">نقش</label>
+         @Html.DropDownListFor(m=>m.RoleId,new SelectList(Model.Roles,"RoleId","RoleTitle")
+         , new {@class = "form-control px-2"})
+      </div>
+      <input type="submit" class="form-control btn btn-success mt-5" value="ثبت نام">
+   }
+</div>

@@ -72,10 +72,7 @@ namespace ET.Data.Repositories
          if (!string.IsNullOrWhiteSpace(search.FullNameOrEmailOrUserName))
             query = query.Where(u=>u.FullName.Contains(search.FullNameOrEmailOrUserName) || u.Email.Contains(search.FullNameOrEmailOrUserName));
 
-         if (!search.ShowWithDeActives)
-            query = query.Where(u => u.IsActive);
-
-         var list = query.ToList();
+         var list = query.OrderByDescending(x=>x.UserId).ToList();
 
          list.ForEach(u => u.RegisterDate = u.RegisterDateEn.ToShamsi());
 

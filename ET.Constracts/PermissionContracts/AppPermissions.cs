@@ -1,8 +1,4 @@
-﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+﻿using System.Collections.Generic;
 
 namespace ET.Constracts.PermissionContracts
 {
@@ -32,11 +28,10 @@ namespace ET.Constracts.PermissionContracts
 
       public static List<int> GetAll()
       {
-         var permissionClass = new AppPermissions();
-         var list = new List<int>();
-         foreach (var prop in permissionClass.GetType().GetProperties(BindingFlags.Public))
-            list.Add((int)prop.GetValue(permissionClass));
-         return list;
+         return new List<int>
+         {
+            101 , 102 , 103 ,201 , 202, 203 , 204 , 205 , 301 , 302 , 303 , 401 , 402 ,403
+         };
       }
    }
 }

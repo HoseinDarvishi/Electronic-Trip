@@ -5,6 +5,9 @@
    <title>@ViewBag.Title</title>
    <link rel="stylesheet" href="~/Content/Site.css">
    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+   @RenderSection("Styles",false)
+
 </head>
 <body class="bg-light">
    <div class="d-flex flex-column justify-content-between pb-3" style="height: 100vh !important;">
@@ -15,14 +18,16 @@
                <li><a href="#">ثبت نام</a></li>
             </ul>
             <ul>
-               <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill"><a href="#">کاربران</a></li>
+               <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
+                  <a href="@Url.Action("Index","Users",new {area="Admin"})">کاربران</a>
+               </li>
                <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill"><a href="#">نقش ها</a></li>
                <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill"><a href="#">رانندگان</a></li>
                <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill"><a href="#">خودروها</a></li>
             </ul>
          </div>
          <div>
-            <div class="pt-2">
+            <div class="pt-2 container mx-auto">
 
                @RenderBody()
 
@@ -31,5 +36,12 @@
       </div>
       <span class="bg-white py-2 px-4 shadow-sm rounded rounded-pill text-center w-auto align-self-center"> 2022 Copyright : Hossein Darvishi </span>
    </div>
+
+   <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+   <script src="~/Scripts/jquery.validate.min.js"></script>
+   <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+   @RenderSection("Scripts",false)
+
 </body>
 </html>

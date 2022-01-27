@@ -17,14 +17,7 @@
 
       protected override void Seed(Context.ETContext context)
       {
-         var role = new Role("Admin");
-         var permissions = AppPermissions.GetAll();
 
-         permissions.ForEach(code => role.Permissions.Add(new Permission(code)));
-         context.Roles.AddOrUpdate(role);
-         context.SaveChanges();
-
-         base.Seed(context);
       }
    }
 }
