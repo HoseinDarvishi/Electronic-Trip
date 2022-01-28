@@ -1,4 +1,6 @@
-﻿namespace ET.Constracts.CarConstracts
+﻿using System;
+
+namespace ET.Constracts.CarConstracts
 {
    public class CarVM
    {
@@ -11,5 +13,6 @@
       public int DriverId { get; set; }
       public string DriverName { get; set; }
       public bool IsRemoved { get; set; }
+      public DateTime RegisterDateEN { get; set; }
    }
 }

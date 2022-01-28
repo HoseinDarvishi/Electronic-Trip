@@ -23,7 +23,26 @@ namespace ET.Web.Areas.Admin.Controllers
       #endregion
 
       #region Activation
-      
+      public ActionResult Active(int id)
+      {
+         var result = _carService.Restore(id);
+         TempData["Message"] = result.Message;
+         return RedirectToAction("Index", "Cars", new { area = "Admin" });
+      }
+
+      public ActionResult DeActive(int id)
+      {
+         var result = _carService.Remove(id);
+         TempData["Message"] = result.Message;
+         return RedirectToAction("Index", "Cars", new { area = "Admin" });
+      }
+      #endregion
+
+      #region Register
+      //public ActionResult Register(CreateCar)
+      //{
+
+      //}
       #endregion
    }
 }

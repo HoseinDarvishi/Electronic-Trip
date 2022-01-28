@@ -39,7 +39,7 @@ namespace ET.Data.Repositories
                Model = x.Model,
                Speed = x.Speed,
                IsRemoved = x.IsRemoved,
-               RegisterDate = x.RegisterDate.ToShamsi(),
+               RegisterDateEN = x.RegisterDate,
                DriverId = x.DriverId,
                DriverName = x.Driver.FullName
             }).AsNoTracking(); 
@@ -56,7 +56,12 @@ namespace ET.Data.Repositories
          if (search.MinModel > 0)
             query = query.Where(x => x.Model > search.MinModel);
 
-         return query.OrderByDescending(x => x.CarId).ToList();
+         query.OrderByDescending(x=>x.CarId).ToList();
+
+         foreach (var car in query)
+            car.RegisterDate = car.RegisterDateEN.ToShamsi();
+
+         return query.ToList();
       }
 
       public CarVM GetDetailsById(int carId)

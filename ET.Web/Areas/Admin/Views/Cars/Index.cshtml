@@ -11,15 +11,15 @@
       {
          <div class="form-inline">
             <input class="form-control px-2" type="number" name="MinModel" value="" />
-            <input class="form-control px-2" type="text" name="CarName" value="" />
-            <select class="form-control px-2 mx-1" name="DriverId">
+            <input class="form-control px-2 mr-2" type="text" name="CarName" value="" />
+            <select class="form-control px-2 mx-2" name="DriverId">
                <option value="0">راننده</option>
                @foreach (var car in Model)
                {
                   <option value="@car.DriverId">@car.DriverName</option>
                }
             </select>
-            <input type="submit" class="mx-3 btn btn-warning text-dark px-3 py-1 mt-2 mt-md-0">
+            <input type="submit" value="جستجو" class="mx-3 btn btn-warning text-dark px-3 py-1 mt-2 mt-md-0">
          </div>
       }
       <a class="btn btn-success text-white px-3 py-1 mt-2 mt-md-0"
