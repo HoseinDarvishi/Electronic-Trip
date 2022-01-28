@@ -9,6 +9,7 @@ namespace ET.Domain.UserAgg
       void Login(LoginUser user);
       List<UserVM> GetAll(SearchUser search);
       User GetById(int userId);
+      EditUser GetForEdit(int userId);
       User GetByUserName(string userName);
       bool IsExists(string userName);
       bool IsExists(int id);

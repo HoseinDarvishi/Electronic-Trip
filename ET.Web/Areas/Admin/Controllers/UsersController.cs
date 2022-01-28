@@ -7,8 +7,8 @@ namespace ET.Web.Areas.Admin.Controllers
 {
    public class UsersController : Controller
    {
-      private IUserService _userService;
-      private IRoleService _roleService;
+      private readonly IUserService _userService;
+      private readonly IRoleService _roleService;
 
       #region Ctor
       public UsersController(IUserService userService , IRoleService roleService)
@@ -44,6 +44,26 @@ namespace ET.Web.Areas.Admin.Controllers
 
          return RedirectToAction("Index" , "Users",new {area="Admin"});
       }
+      #endregion
+
+      #region Edit
+      public ActionResult Edit(int id)
+      {
+         var user = _userService.GetById(id);
+         user.Roles = _roleService.GetAll(string.Empty);
+         return View(user);
+      }
+
+      [HttpPost]
+      public ActionResult Edit(EditUser edit)
+      {
+         if (!ModelState.IsValid) return View(edit);
+
+         var result = _userService.Edit(edit);
+
+         TempData["Message"] = result.Message;
+         return View();
+      } 
       #endregion
 
       #region Activation

@@ -78,5 +78,19 @@ namespace ET.Data.Repositories
 
          return list;
       }
+
+      public EditUser GetForEdit(int userId)
+      {
+         return _context.Users
+            .Select(x=> new EditUser
+            {
+               UserId = x.UserId,
+               FullName = x.FullName,
+               Email = x.Email,
+               RoleId = x.RoleId
+            })
+            .AsNoTracking()
+            .FirstOrDefault(x => x.UserId == userId);
+      }
    }
 }

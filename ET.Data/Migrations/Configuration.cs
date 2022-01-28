@@ -1,17 +1,12 @@
-﻿namespace ET.Data.Migrations
-{
-   using ET.Constracts.PermissionContracts;
-   using ET.Domain.RoleAgg;
-   using System;
-   using System.Data.Entity;
-   using System.Data.Entity.Migrations;
-   using System.Linq;
+﻿using System.Data.Entity.Migrations;
 
+namespace ET.Data.Migrations
+{
    internal sealed class Configuration : DbMigrationsConfiguration<Context.ETContext>
    {
       public Configuration()
       {
-         AutomaticMigrationsEnabled = true;
+         AutomaticMigrationsEnabled = false;
          ContextKey = "ET.Data.Context.ETContext";
       }
 

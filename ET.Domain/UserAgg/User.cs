@@ -41,11 +41,11 @@ namespace ET.Domain.UserAgg
 
       public void DeActive() => IsActive = false;
 
-      public void Edit(string fullName, string userName, string email)
+      public void Edit(string fullName, string email, int roleId)
       {
          FullName = fullName;
-         UserName = userName;
          Email = email;
+         RoleId = roleId;
       }
       #endregion
    }

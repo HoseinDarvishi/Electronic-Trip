@@ -1,0 +1,30 @@
+﻿@model ET.Constracts.UserContracts.EditUser
+
+@{
+   ViewBag.Title = "ویرایش کاربر";
+   Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="mx-auto text-right rounded rounded-2 shadow-lg bg-white p-4 form-container">
+   <h3 class="text-center">ویرایش کاربر</h3>
+   <hr class="my-2">
+   @using (Html.BeginForm("Edit", "Users", new { area = "Admin" }, FormMethod.Post))
+   {
+      <div class="form-group">
+         @Html.LabelFor(m => m.FullName, new { @class = "mb-1 mt-2" })
+         @Html.TextBoxFor(m => m.FullName, new { @class = "form-control px-2" })
+         @Html.ValidationMessageFor(m => m.FullName)
+      </div>
+      <div class="form-group">
+         @Html.LabelFor(m => m.Email, new { @class = "mb-1 mt-2" })
+         @Html.TextBoxFor(m => m.Email, new { @class = "form-control px-2" })
+         @Html.ValidationMessageFor(m => m.Email)
+      </div>
+      <div class="form-group">
+         @Html.LabelFor(m => m.RoleId, new { @class = "mb-1 mt-2" })
+         @Html.DropDownListFor(m => m.RoleId, new SelectList(Model.Roles, "RoleId", "RoleTitle")
+         , new { @class = "form-control px-2" })
+      </div>
+      <input type="submit" class="form-control btn btn-success mt-5" value="ویرایش">
+   }
+</div>

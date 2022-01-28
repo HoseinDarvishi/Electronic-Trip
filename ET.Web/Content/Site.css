@@ -30,3 +30,7 @@ a {
 td , th{
    padding : 7px !important;
 }
+
+.form-container{
+   max-width : 500px;
+}
