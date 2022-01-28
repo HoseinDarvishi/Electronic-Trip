@@ -5,6 +5,5 @@
       public int MinModel { get; set; }
       public string CarName { get; set; }
       public int DriverId { get; set; }
-      public bool ShowWithRemoved { get; set; }
    }
 }

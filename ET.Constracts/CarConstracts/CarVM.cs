@@ -4,7 +4,7 @@
    {
       public int CarId { get; set; }
       public string CarName { get; set; }
-      public string RegisterCar { get; set; }
+      public string RegisterDate { get; set; }
       public int Model { get; set; }
       public int Speed { get; set; }
       public string Color { get; set; }

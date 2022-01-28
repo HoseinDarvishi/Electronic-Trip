@@ -21,9 +21,15 @@
                <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
                   <a href="@Url.Action("Index","Users",new {area="Admin"})">کاربران</a>
                </li>
-               <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill"><a href="#">نقش ها</a></li>
-               <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill"><a href="#">رانندگان</a></li>
-               <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill"><a href="#">خودروها</a></li>
+               <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
+                  <a href="@Url.Action("Index","Roles",new {area = "Admin"})">نقش ها</a>
+               </li>
+               <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
+                  <a href="@Url.Action("Index","Drivers",new {area = "Admin"})">رانندگان</a>
+               </li>
+               <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
+                  <a href="@Url.Action("Index","Cars",new {area = "Admin"})">خودروها</a>
+               </li>
             </ul>
          </div>
          <div>

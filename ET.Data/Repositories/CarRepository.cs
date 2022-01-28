@@ -18,20 +18,19 @@ namespace ET.Data.Repositories
       public CarRepository(ETContext context)
       {
          _context = context;
-      } 
+      }
       #endregion
 
       public void AddCar(CreateCar car)
       {
-         var newCar = new Car(car.CarName, car.Model, car.Speed,car.Color , car.DriverId);
+         var newCar = new Car(car.CarName, car.Model, car.Speed, car.Color, car.DriverId);
          _context.Cars.Add(newCar);
          Save();
       }
 
-      public List<CarVM> GetAll(SearchCar search)
+      public List<CarVM> GetAll(SearchCar search, bool showAll = true)
       {
          var query = _context.Cars
-            .Where(x => !x.IsRemoved)
             .Include(x => x.Driver)
             .Select(x => new CarVM
             {
@@ -40,13 +39,12 @@ namespace ET.Data.Repositories
                Model = x.Model,
                Speed = x.Speed,
                IsRemoved = x.IsRemoved,
-               RegisterCar = x.RegisterDate.ToShamsi(),
+               RegisterDate = x.RegisterDate.ToShamsi(),
                DriverId = x.DriverId,
                DriverName = x.Driver.FullName
-            })
-            .AsNoTracking();
+            }).AsNoTracking(); 
 
-         if (!search.ShowWithRemoved)
+         if (!showAll)
             query = query.Where(x => !x.IsRemoved);
 
          if (!string.IsNullOrWhiteSpace(search.CarName))
@@ -70,7 +68,7 @@ namespace ET.Data.Repositories
             Model = x.Model,
             Speed = x.Speed,
             IsRemoved = x.IsRemoved,
-            RegisterCar = x.RegisterDate.ToShamsi(),
+            RegisterDate = x.RegisterDate.ToShamsi(),
             DriverId = x.DriverId,
             DriverName = x.Driver.FullName
          })
@@ -89,7 +87,7 @@ namespace ET.Data.Repositories
                Model = x.Model,
                Speed = x.Speed,
                IsRemoved = x.IsRemoved,
-               RegisterCar = x.RegisterDate.ToShamsi(),
+               RegisterDate = x.RegisterDate.ToShamsi(),
                Color = x.Color,
                DriverId = x.DriverId,
                DriverName = x.Driver.FullName
