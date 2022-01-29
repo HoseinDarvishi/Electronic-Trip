@@ -5,16 +5,17 @@
 }
 <div class="pt-4">
    <div class="container p-2 mx-auto rounded rounded-2 bg-white shadow-sm d-flex flex-column flex-md-row justify-content-between align-items-stretch">
-      @*<div class="form-inline">
-         <input class="form-control px-2" placeholder="نام و نام کاربری" type="text">
-         <select class="form-control px-2 mx-1">
-            <option value="0">نقش</option>
-         </select>
-         <a class="mx-3 btn btn-warning text-dark px-3 py-1 mt-2 mt-md-0" href="#">جستجو</a>
-      </div>*@
       <a class="btn btn-success text-white px-3 py-1 mt-2 mt-md-0"
-         href="@Url.Action("Register","Users",new {area="Admin"})" >ایجاد کاربر جدید</a>
+         href="@Url.Action("Register","Users",new {area="Admin"})">ایجاد کاربر جدید</a>
    </div>
+
+   @if (TempData["Message"] != null)
+   {
+      <div class="container mt-2 p-2 mx-auto rounded rounded-2 bg-white shadow-sm">
+         <p class="alert p-1 alert-warning text-center">@TempData["Message"]</p>
+      </div>
+   }
+
    <div class="container mt-3 mx-auto p-4 rounded rounded-2 bg-white shadow-sm">
       <table class="table table-striped table-bordered text-center">
          <thead>

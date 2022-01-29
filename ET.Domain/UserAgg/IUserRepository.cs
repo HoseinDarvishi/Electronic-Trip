@@ -8,6 +8,8 @@ namespace ET.Domain.UserAgg
       void Register(RegisterUser user);
       void Login(LoginUser user);
       List<UserVM> GetAll(SearchUser search);
+      List<UserVM> GetAllDrivers();
+      List<UserVM> GetAllDrivers(int driverRoleId);
       User GetById(int userId);
       EditUser GetForEdit(int userId);
       User GetByUserName(string userName);

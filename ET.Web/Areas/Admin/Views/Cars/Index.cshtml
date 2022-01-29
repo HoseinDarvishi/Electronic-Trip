@@ -7,11 +7,11 @@
 
 <div class="pt-4">
    <div class="container p-2 mx-auto rounded rounded-2 bg-white shadow-sm d-flex flex-column flex-md-row justify-content-between align-items-stretch">
-      @using (Html.BeginForm("index", "Cars", new { area = "Admin" }, FormMethod.Post))
+      @using (Html.BeginForm("Index", "Cars", new { area = "Admin" }, FormMethod.Post))
       {
          <div class="form-inline">
-            <input class="form-control px-2" type="number" name="MinModel" value="" />
-            <input class="form-control px-2 mr-2" type="text" name="CarName" value="" />
+            <input class="form-control px-2" type="number" name="MinModel" />
+            <input class="form-control px-2 mr-2" type="text" name="CarName" />
             <select class="form-control px-2 mx-2" name="DriverId">
                <option value="0">راننده</option>
                @foreach (var car in Model)
@@ -25,6 +25,14 @@
       <a class="btn btn-success text-white px-3 py-1 mt-2 mt-md-0"
          href="@Url.Action("Register", "Cars", new { area = "Admin" })">افزودن خودرو جدید</a>
    </div>
+
+   @if (TempData["Message"] != null)
+   {
+      <div class="container mt-2 p-2 mx-auto rounded rounded-2 bg-white shadow-sm">
+         <p class="alert p-1 alert-warning text-center">@TempData["Message"]</p>
+      </div>
+   }
+
    <div class="container mt-3 mx-auto p-4 rounded rounded-2 bg-white shadow-sm">
       <table class="table table-striped table-bordered text-center">
          <thead>

@@ -26,6 +26,6 @@ namespace ET.Constracts.UserContracts
       [StringLength(200, ErrorMessage = "حداکثر 200 کاراکتر")]
       public string Email { get; set; }
 
-      public List<RoleVM> Roles { get; set; }
+      public List<RoleVM> Roles { get; set; } = new List<RoleVM>();
    }
 }

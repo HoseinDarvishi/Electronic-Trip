@@ -92,5 +92,31 @@ namespace ET.Data.Repositories
             .AsNoTracking()
             .FirstOrDefault(x => x.UserId == userId);
       }
+
+      public List<UserVM> GetAllDrivers()
+      {
+         return _context.Users.Include(x => x.Role)
+            .Where(u => u.Role.RoleTitle == "Driver" || u.Role.RoleTitle == "راننده")
+            .Select(x => new UserVM
+            {
+               UserId = x.UserId,
+               FullName = x.FullName
+            })
+            .AsNoTracking()
+            .ToList();
+      }
+
+      public List<UserVM> GetAllDrivers(int driverRoleId)
+      {
+         return _context.Users.Include(x => x.Role)
+            .Where(u => u.Role.RoleId == driverRoleId)
+            .Select(x => new UserVM
+            {
+               UserId = x.UserId,
+               FullName = x.FullName
+            })
+            .AsNoTracking()
+            .ToList();
+      }
    }
 }

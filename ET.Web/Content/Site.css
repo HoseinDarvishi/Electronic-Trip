@@ -34,3 +34,9 @@ td , th{
 .form-container{
    max-width : 500px;
 }
+
+.field-validation-error{
+   color:red;
+   margin : 5px 0px;
+   font-size : 14px;
+}

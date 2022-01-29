@@ -1,4 +1,7 @@
-﻿namespace ET.Constracts.CarConstracts
+﻿using ET.Constracts.UserContracts;
+using System.Collections.Generic;
+
+namespace ET.Constracts.CarConstracts
 {
    public class EditCar
    {
@@ -8,5 +11,7 @@
       public int Speed { get; set; }
       public string Color { get; set; }
       public int DriverId { get; set; }
+
+      public List<UserVM> Drivers { get; set; } = new List<UserVM>();
    }
 }

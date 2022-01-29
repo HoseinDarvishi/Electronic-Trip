@@ -11,5 +11,6 @@ namespace ET.Constracts.UserContracts
       OperationResult Active(int id);
       OperationResult DeActive(int id);
       OperationResult Edit(EditUser edit);
+      List<UserVM> GetAllDrivers();
    }
 }

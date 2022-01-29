@@ -10,6 +10,7 @@ namespace ET.Domain.CarAgg
       List<CarVM> GetAll(SearchCar search , bool showAll = true);
       CarVM GetDetailsById(int carId);
       Car GetById(int carId);
+      EditCar GetForEdit(int carId);
       List<CarVM> GetByName(string carName);
       void AddCar(CreateCar car);
       bool IsExsist(int id);

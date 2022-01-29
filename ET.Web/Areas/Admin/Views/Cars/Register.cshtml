@@ -1,0 +1,56 @@
+﻿@model ET.Constracts.CarConstracts.CreateCar
+
+@{
+   ViewBag.Title = "ثبت ماشین";
+   Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+   Html.EnableClientValidation(true);
+   Html.EnableUnobtrusiveJavaScript(true);
+   Html.SetValidationMessageElement("span");
+}
+
+<div class="mx-auto text-right rounded rounded-2 shadow bg-white p-4 form-container">
+   <h3 class="text-center">ثبت خودرو</h3>
+
+   @if (TempData["Message"] != null)
+   {
+      <div class="container mt-2 p-2 mx-auto rounded rounded-2 bg-white shadow-sm">
+         <p class="alert p-1 alert-warning text-center">@TempData["Message"]</p>
+      </div>
+   }
+
+   <hr class="my-2">
+   @using (Html.BeginForm("Register", "Cars", new { area = "Admin" }, FormMethod.Post))
+   {
+      <div class="form-group">
+         <label class="mb-1 mt-2">نام خودرو :   </label>
+         <input class="form-control px-2" name="CarName" type="text" placeholder="پراید 111">
+         @Html.ValidationMessageFor(m => m.CarName)
+      </div>
+      <div class="form-group">
+         <label class="mb-1 mt-2">مدل : </label>
+         <input class="form-control px-2" name="Model" type="number" placeholder="1398">
+         @Html.ValidationMessageFor(m => m.Model)
+      </div>
+      <div class="form-group">
+         <label class="mb-1 mt-2">رنگ : </label>
+         <input class="form-control px-2" name="Color" type="text" placeholder="نقره ای">
+         @Html.ValidationMessageFor(m => m.Color)
+      </div>
+      <div class="form-group">
+         <label class="mb-1 mt-2">سرعت خودرو : </label>
+         <input class="form-control px-2" name="Speed" type="number" placeholder="180">
+         @Html.ValidationMessageFor(m => m.Speed)
+      </div>
+      <div class="form-group">
+         <label class="mb-1 mt-2">راننده</label>
+         <select name="DriverId" class="form-control px-2">
+            <option value="0">راننده</option>
+            @foreach (var driver in Model.Drivers)
+            {
+               <option value="@driver.UserId">@driver.FullName</option>
+            }
+         </select>
+      </div>
+      <input type="submit" class="form-control btn btn-success mt-5" value="ثبت خودرو">
+   }
+</div>

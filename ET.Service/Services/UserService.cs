@@ -56,6 +56,11 @@ namespace ET.Service.Services
          return _userRepo.GetAll(search);
       }
 
+      public List<UserVM> GetAllDrivers()
+      {
+         return _userRepo.GetAllDrivers();
+      }
+
       public EditUser GetById(int id)
       {
          return _userRepo.GetForEdit(id);

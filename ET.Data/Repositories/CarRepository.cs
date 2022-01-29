@@ -122,5 +122,21 @@ namespace ET.Data.Repositories
       {
          return _context.Cars.Any(expression);
       }
+
+      public EditCar GetForEdit(int carId)
+      {
+         return _context.Cars
+            .Select(x => new EditCar
+            {
+               CarId = x.CarId,
+               CarName = x.CarName,
+               Color = x.Color,
+               Speed = x.Speed,
+               Model = x.Model,
+               DriverId = x.DriverId
+            })
+            .AsNoTracking()
+            .FirstOrDefault(x => x.CarId == carId);
+      }
    }
 }

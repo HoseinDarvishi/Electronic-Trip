@@ -39,6 +39,11 @@ namespace ET.Service.Services
          return _carRepo.GetAll(search);
       }
 
+      public EditCar GetForEdit(int carId)
+      {
+         return _carRepo.GetForEdit(carId);
+      }
+
       public OperationResult RegisterCar(CreateCar createCar)
       {
          if (_carRepo.IsExsist(c => c.CarName == createCar.CarName && c.Color == createCar.Color &&

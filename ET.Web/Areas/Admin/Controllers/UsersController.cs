@@ -57,12 +57,21 @@ namespace ET.Web.Areas.Admin.Controllers
       [HttpPost]
       public ActionResult Edit(EditUser edit)
       {
-         if (!ModelState.IsValid) return View(edit);
+         if (!ModelState.IsValid) 
+         {
+            edit.Roles = _roleService.GetAll(string.Empty);
+            return View(edit); 
+         }
 
          var result = _userService.Edit(edit);
 
          TempData["Message"] = result.Message;
-         return View();
+
+         if (result.IsSuccess) return RedirectToAction("Index", "Users", new { area = "Admin" });
+
+         edit.Roles = _roleService.GetAll(string.Empty);
+
+         return View(edit);
       } 
       #endregion
 
