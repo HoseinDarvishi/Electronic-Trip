@@ -27,10 +27,11 @@ namespace ET.Data.Repositories
 
       public List<RoleVM> GetAll(string roleTitle)
       {
-         var query = _context.Roles.Select(x => new RoleVM
+         var query = _context.Roles.Include(x=>x.Users).Select(x => new RoleVM
          {
             RoleId = x.RoleId,
-            RoleTitle = x.RoleTitle
+            RoleTitle = x.RoleTitle,
+            UsersCount = x.Users.Count
          })
          .AsNoTracking();
 

@@ -4,5 +4,6 @@
    {
       public string RoleTitle { get; set; }
       public int RoleId { get; set; }
+      public int UsersCount { get; set; }
    }
 }

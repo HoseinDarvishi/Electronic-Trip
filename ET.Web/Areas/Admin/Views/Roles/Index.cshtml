@@ -7,6 +7,13 @@
 
 <div class="pt-4">
    <div class="container p-2 mx-auto rounded rounded-2 bg-white shadow-sm d-flex flex-column flex-md-row justify-content-between align-items-stretch">
+      @using (Html.BeginForm("Index", "Roles", new { area = "Admin" }, FormMethod.Post))
+      {
+         <div class="form-inline">
+            <input class="form-control px-2" type="text" name="roleTitle" placeholder="جستجو براساس عنوان"/>
+            <input type="submit" value="جستجو" class="mx-3 btn btn-warning text-dark px-3 py-1 mt-2 mt-md-0">
+         </div>
+      }
       <a class="btn btn-success text-white px-3 py-1 mt-2 mt-md-0"
          href="@Url.Action("Create","Roles",new {area="Admin"})">ایجاد نقش جدید</a>
    </div>
@@ -34,7 +41,7 @@
                <tr>
                   <td>@role.RoleId</td>
                   <td>@role.RoleTitle</td>
-                  <td>100</td>
+                  <td>@role.UsersCount</td>
                   <td>
                      <a href="@Url.Action("Edit","Roles",new {area="Admin" , id=role.RoleId})"
                         class="btn btn-info text-white rounded rounded-1 shadow p-1">ویرایش</a>
