@@ -47,6 +47,12 @@ namespace ET.Service.Services
          return _roleRepo.GetAll(roleTitle);
       }
 
+      public EditRole GetById(int id)
+      {
+         var role = _roleRepo.GetById(id);
+         return new EditRole { RoleId = role.RoleId, RoleTitle = role.RoleTitle };
+      }
+
       public string GetNameById(int id)
       {
          var role = _roleRepo.GetById(id);

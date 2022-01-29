@@ -1,0 +1,21 @@
+﻿@model ET.Constracts.RoleConstracts.EditRole
+
+@{
+    ViewBag.Title = $"ویرایش نقش {Model.RoleTitle}";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="mx-auto text-right rounded rounded-2 shadow bg-white p-4 form-container">
+   <h3 class="text-center">ویرایش نقش @Model.RoleTitle</h3>
+   <hr class="my-2">
+   @using (Html.BeginForm("Edit", "Roles", new { area = "Admin" }, FormMethod.Post))
+   {
+      <div class="form-group">
+         @Html.LabelFor(m => m.RoleTitle, new { @class = "mb-1 mt-2" })
+         @Html.TextBoxFor(m => m.RoleTitle, new { @class = "form-control px-2", placeholder = "انباردار" })
+         @Html.ValidationMessageFor(m => m.RoleTitle)
+         @Html.HiddenFor(m => m.RoleId)
+      </div>
+      <input type="submit" class="form-control btn btn-success mt-5" value="ویرایش">
+   }
+</div>

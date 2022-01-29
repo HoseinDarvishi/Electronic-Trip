@@ -37,5 +37,24 @@ namespace ET.Web.Areas.Admin.Controllers
          return RedirectToAction("Index", "Roles", new { area = "Admin" });
       }
       #endregion
+
+      #region Edit
+      public ActionResult Edit(int id)
+      {
+         var role = _roleService.GetById(id);
+         return View(role);
+      }
+
+      [HttpPost]
+      public ActionResult Edit(EditRole role)
+      {
+         if (!ModelState.IsValid) return View(role);
+
+         var result = _roleService.EditRole(role);
+         TempData["Message"] = result.Message;
+
+         return RedirectToAction("Index", "Roles", new { area = "Admin" });
+      }
+      #endregion
    }
 }
