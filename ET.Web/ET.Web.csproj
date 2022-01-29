@@ -182,6 +182,7 @@
     <Content Include="Areas\Admin\Views\Cars\Register.cshtml" />
     <Content Include="Areas\Admin\Views\Cars\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Roles\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Roles\Create.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

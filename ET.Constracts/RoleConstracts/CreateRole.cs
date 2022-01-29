@@ -3,10 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ET.Constracts.RoleConstracts
 {
-   public class EditRole
+   public class CreateRole
    {
-      public int RoleId { get; set; }
-
       [DisplayName("عنوان نقش")]
       [Required(ErrorMessage = "این مورد الزامی است")]
       [MinLength(4, ErrorMessage = "حداقل 4 کاراکتر")]

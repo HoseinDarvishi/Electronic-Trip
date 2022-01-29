@@ -11,13 +11,31 @@ namespace ET.Web.Areas.Admin.Controllers
       public RolesController(IRoleService roleService)
       {
          _roleService = roleService;
-      } 
+      }
       #endregion
 
+      #region List
       public ActionResult Index(string roleTitle)
       {
          var roles = _roleService.GetAll(roleTitle);
          return View(roles);
       }
+      #endregion
+
+      #region Craete
+      public ViewResult Create() => View();
+
+      [HttpPost]
+      public ActionResult Create(CreateRole role)
+      {
+         if (!ModelState.IsValid) return View(role);
+
+         var result = _roleService.AddRole(role.RoleTitle);
+
+         TempData["Message"] = result.Message;
+
+         return RedirectToAction("Index", "Roles", new { area = "Admin" });
+      }
+      #endregion
    }
 }

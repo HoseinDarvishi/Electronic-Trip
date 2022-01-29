@@ -57,6 +57,7 @@
     <Compile Include="RequestContracts\IRequestService.cs" />
     <Compile Include="RequestContracts\RequestVM.cs" />
     <Compile Include="RequestContracts\SearchRequest.cs" />
+    <Compile Include="RoleConstracts\CreateRole.cs" />
     <Compile Include="RoleConstracts\EditRole.cs" />
     <Compile Include="RoleConstracts\IRoleService.cs" />
     <Compile Include="RoleConstracts\RoleVM.cs" />

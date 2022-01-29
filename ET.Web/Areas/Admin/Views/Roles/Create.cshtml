@@ -1,0 +1,23 @@
+﻿@model ET.Constracts.RoleConstracts.CreateRole
+
+@{
+   ViewBag.Title = "ایجاد نقش";
+   Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+   Html.EnableClientValidation(true);
+   Html.EnableUnobtrusiveJavaScript(true);
+   Html.SetValidationMessageElement("span");
+}
+
+<div class="mx-auto text-right rounded rounded-2 shadow bg-white p-4 form-container">
+   <h3 class="text-center">ایجاد نقش</h3>
+   <hr class="my-2">
+   @using (Html.BeginForm("Create", "Roles", new { area = "Admin" }, FormMethod.Post))
+   {
+      <div class="form-group">
+         @Html.LabelFor(m=>m.RoleTitle , new {@class = "mb-1 mt-2"})
+         @Html.TextBoxFor(m=>m.RoleTitle , new{@class = "form-control px-2" , placeholder = "انباردار" })
+         @Html.ValidationMessageFor(m => m.RoleTitle)
+      </div>
+      <input type="submit" class="form-control btn btn-success mt-5" value="ثبت">
+   }
+</div>
