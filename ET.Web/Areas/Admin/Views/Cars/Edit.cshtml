@@ -1,7 +1,7 @@
-﻿@model ET.Constracts.CarConstracts.CreateCar
+﻿@model ET.Constracts.CarConstracts.EditCar
 
 @{
-   ViewBag.Title = "ثبت ماشین";
+   ViewBag.Title = "ویرایش خودرو";
    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
    Html.EnableClientValidation(true);
    Html.EnableUnobtrusiveJavaScript(true);
@@ -43,14 +43,10 @@
       </div>
       <div class="form-group">
          <label class="mb-1 mt-2">راننده</label>
-         <select name="DriverId" class="form-control px-2">
-            <option value="0">راننده</option>
-            @foreach (var driver in Model.Drivers)
-            {
-               <option value="@driver.UserId">@driver.FullName</option>
-            }
-         </select>
+         @Html.DropDownListFor(m => m.DriverId, new SelectList(Model.Drivers, "UserId", "FullName")
+            , new {@class = "form-control px-2"})
          @Html.ValidationMessageFor(m=>m.DriverId)
+         @Html.HiddenFor(m=>m.CarId)
       </div>
       <input type="submit" class="form-control btn btn-success mt-5" value="ثبت خودرو">
    }
