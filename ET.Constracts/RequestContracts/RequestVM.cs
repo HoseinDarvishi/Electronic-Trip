@@ -1,4 +1,6 @@
-﻿namespace ET.Constracts.RequestContracts
+﻿using System;
+
+namespace ET.Constracts.RequestContracts
 {
    public class RequestVM
    {
@@ -12,6 +14,7 @@
       public int StatusId { get; set; }
       public string Address { get; set; }
       public string DetachCode { get; set; }
+      public DateTime RequestDateEN { get; set; }
       public string RequestDate { get; set; }
    }
 }

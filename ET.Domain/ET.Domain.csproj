@@ -47,6 +47,7 @@
     <Compile Include="RequestAgg\IRequestRepository.cs" />
     <Compile Include="RequestAgg\Request.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestAgg\RequestStatuses.cs" />
     <Compile Include="RoleAgg\IRoleRepository.cs" />
     <Compile Include="RoleAgg\Permission.cs" />
     <Compile Include="RoleAgg\Role.cs" />

@@ -13,7 +13,7 @@ namespace ET.Domain.RequestAgg
       {
          UserId = userId;
          CarId = carId;
-         StatusId = (int)OrderStatues.Waiting;
+         StatusId = (int)RequestStatuses.Waiting;
          Address = address;
          DetachCode = detachCode;
          RequestDate = DateTime.Now;
@@ -34,18 +34,11 @@ namespace ET.Domain.RequestAgg
       #endregion
 
       #region Edit
-      public void Cancel() => StatusId = (int)OrderStatues.Canceled;
+      public void Cancel() => StatusId = (int)RequestStatuses.Canceled;
 
-      public void Done() => StatusId = (int)OrderStatues.Done;
+      public void Done() => StatusId = (int)RequestStatuses.Done;
 
       public int Status() => StatusId;
       #endregion
-   }
-
-   public enum OrderStatues
-   {
-      Waiting = 1,  
-      Done = 2,
-      Canceled = 3
    }
 }

@@ -38,7 +38,7 @@ namespace ET.Data.Repositories
                StatusId = x.StatusId,
                DetachCode = x.DetachCode,
                Address = x.Address,
-               RequestDate = x.RequestDate.ToShamsi(),
+               RequestDateEN = x.RequestDate,
                CarId = x.CarId,
                UserId = x.UserId,
                CarName = x.Car.CarName,
@@ -54,7 +54,11 @@ namespace ET.Data.Repositories
          if (search.StatusId > 0)
             query = query.Where(r => r.StatusId == search.StatusId);
 
-         return query.OrderByDescending(r => r.RequestId).ToList();
+         var list = query.OrderByDescending(r => r.RequestId).ToList();
+
+         list.ForEach(r => r.RequestDate = r.RequestDateEN.ToShamsi());
+
+         return list;
       }
 
       public Request GetById(int id)
