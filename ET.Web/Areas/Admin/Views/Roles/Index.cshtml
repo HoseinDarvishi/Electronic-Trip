@@ -1,0 +1,47 @@
+﻿@model List<ET.Constracts.RoleConstracts.RoleVM>
+
+@{
+    ViewBag.Title = "نقش ها";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="pt-4">
+   <div class="container p-2 mx-auto rounded rounded-2 bg-white shadow-sm d-flex flex-column flex-md-row justify-content-between align-items-stretch">
+      <a class="btn btn-success text-white px-3 py-1 mt-2 mt-md-0"
+         href="@Url.Action("Create","Roles",new {area="Admin"})">ایجاد نقش جدید</a>
+   </div>
+
+   @if (TempData["Message"] != null)
+   {
+      <div class="container mt-2 p-2 mx-auto rounded rounded-2 bg-white shadow-sm">
+         <p class="alert p-1 alert-warning text-center">@TempData["Message"]</p>
+      </div>
+   }
+
+   <div class="container mt-3 mx-auto p-4 rounded rounded-2 bg-white shadow-sm">
+      <table class="table table-striped table-bordered text-center">
+         <thead>
+            <tr>
+               <th>#</th>
+               <th>عنوان</th>
+               <th>تعداد کاربران</th>
+               <th>عملیات</th>
+            </tr>
+         </thead>
+         <tbody>
+            @foreach (var role in Model)
+            {
+               <tr>
+                  <td>@role.RoleId</td>
+                  <td>@role.RoleTitle</td>
+                  <td>100</td>
+                  <td>
+                     <a href="@Url.Action("Edit","Roles",new {area="Admin" , id=role.RoleId})"
+                        class="btn btn-info text-white rounded rounded-1 shadow p-1">ویرایش</a>
+                  </td>
+               </tr>
+            }
+         </tbody>
+      </table>
+   </div>
+</div>
