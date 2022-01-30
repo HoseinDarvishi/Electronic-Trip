@@ -68,7 +68,7 @@ namespace ET.Service.Services
             return new OperationResult().Failed(Messages.NotFound);
 
          List<Permission> permissions = new List<Permission>();
-         permissionsVM.Permissions.ForEach(p => permissions.Add(new Permission(p.Code)));
+         permissionsVM.Permissions.ForEach(p => permissions.Add(new Permission(p)));
 
          _roleRepo.SetPermissions(permissionsVM.RoleId, permissions);
          return new OperationResult().Success(Messages.Success);

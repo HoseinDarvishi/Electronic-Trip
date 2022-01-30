@@ -1,0 +1,25 @@
+﻿@model ET.Constracts.PermissionContracts.SetPermissions
+
+@{
+   ViewBag.Title = "SetPermissions";
+   Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="mx-auto text-right rounded rounded-2 shadow bg-white p-4 form-container">
+   <h3 class="text-center">تعیین دسترسی</h3>
+   <hr class="my-2">
+   @using (Html.BeginForm("SetPermissions", "Roles", new { area = "Admin" }, FormMethod.Post))
+   {
+      <div class="form-group">
+         <select class="form-control px-2" name="Permissions" multiple="multiple">
+            @foreach (var perm in Model.MappedPermissions)
+            {
+               <option value="@perm.Code">@perm.Name</option>
+            }
+         </select>
+         @Html.HiddenFor(m => m.RoleId)
+      </div>
+      <input type="submit" class="form-control btn btn-success mt-5" value="تایید">
+   }
+</div>

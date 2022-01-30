@@ -4,6 +4,6 @@ namespace ET.Constracts.PermissionContracts
 {
    public interface IPermissionExposer
    {
-      Dictionary<string,List<PermissionVM>> Expose();
+      List<PermissionVM> Expose();
    }
 }

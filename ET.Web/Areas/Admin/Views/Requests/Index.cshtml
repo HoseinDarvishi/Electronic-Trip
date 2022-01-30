@@ -10,11 +10,11 @@
 
 <div class="pt-4">
    <div class="container p-2 mx-auto rounded rounded-2 bg-white shadow-sm d-flex flex-column flex-md-row justify-content-between align-items-stretch">
+      @* Search Form *@
       @using (Html.BeginForm("Index", "Requests", new { area = "Admin" }, FormMethod.Post))
       {
          <div class="form-inline">
-            <input class="form-control px-2" type="number" name="MinModel" />
-            <input class="form-control px-2 mr-2" type="text" name="CarName" />
+            <input class="form-control px-2 mr-2" type="text" name="DetachCode" />
             <select class="form-control px-2 mx-2" name="DriverId">
                <option value="0">راننده</option>
                <option value="1">در انتظار</option>
@@ -72,7 +72,7 @@
                         <span class="badge badge-danger p-2">لغو شده</span>
                      }
                   </td>
-                  <td>@req.Address.Remove(20) ...</td>
+                  <td>@(req.Address.Remove(25) + " ...")</td>
                   <td>@req.DetachCode</td>
                   <td>@req.RequestDate</td>
 
