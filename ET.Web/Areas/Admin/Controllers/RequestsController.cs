@@ -19,7 +19,30 @@ namespace ET.Web.Areas.Admin.Controllers
       {
          var reqs = _reqService.GetAll(search);
          return View(reqs);
-      } 
+      }
+      #endregion
+
+      #region Status
+      public ActionResult Done(int id)
+      {
+         var result = _reqService.DoneRequest(id);
+         TempData["Message"] = result.Message;
+         return RedirectToAction("Index", "Requests", new { area = "Admin" });
+      }
+
+      public ActionResult Cancel(int id)
+      {
+         var result = _reqService.CancelRequest(id);
+         TempData["Message"] = result.Message;
+         return RedirectToAction("Index", "Requests", new { area = "Admin" });
+      }
+
+      public ActionResult Wait(int id)
+      {
+         var result = _reqService.DoneRequest(id);
+         TempData["Message"] = result.Message;
+         return RedirectToAction("Index", "Requests", new { area = "Admin" });
+      }
       #endregion
    }
 }

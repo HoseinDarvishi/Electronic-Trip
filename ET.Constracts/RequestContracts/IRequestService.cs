@@ -8,5 +8,6 @@ namespace ET.Constracts.RequestContracts
       OperationResult SetRequest(AddRequest request);
       OperationResult CancelRequest(int requestId);
       OperationResult DoneRequest(int requestId);
+      OperationResult WaitRequest(int requestId);
    }
 }

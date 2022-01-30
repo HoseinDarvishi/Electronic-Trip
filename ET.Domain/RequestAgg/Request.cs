@@ -36,6 +36,8 @@ namespace ET.Domain.RequestAgg
       #region Edit
       public void Cancel() => StatusId = (int)RequestStatuses.Canceled;
 
+      public void Wait() => StatusId = (int)RequestStatuses.Waiting;
+
       public void Done() => StatusId = (int)RequestStatuses.Done;
 
       public int Status() => StatusId;

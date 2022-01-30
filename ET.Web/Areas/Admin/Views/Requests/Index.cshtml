@@ -59,15 +59,15 @@
                   <td>@req.CarModel</td>
                   <td>@req.CarColor</td>
                   <td>
-                     @if (req.StatusId == (int)OrderStatues.Waiting)
+                     @if (req.StatusId == (int)RequestStatuses.Waiting)
                      {
                         <span class="badge badge-warning p-2">در انتظار</span>
                      }
-                     else if (req.StatusId == (int)OrderStatues.Done)
+                     else if (req.StatusId == (int)RequestStatuses.Done)
                      {
                         <span class="badge badge-success p-2">انجام شده</span>
                      }
-                     else if (req.StatusId == (int)OrderStatues.Canceled)
+                     else if (req.StatusId == (int)RequestStatuses.Canceled)
                      {
                         <span class="badge badge-danger p-2">لغو شده</span>
                      }
@@ -75,9 +75,23 @@
                   <td>@req.Address.Remove(20) ...</td>
                   <td>@req.DetachCode</td>
                   <td>@req.RequestDate</td>
-                 
+
                   <td>
-                     Amaliat
+                     @if (req.StatusId != (int)RequestStatuses.Waiting)
+                     {
+                        <a href="@Url.Action("Wait","Requests",new {area="Admin" , id=req.RequestId})"
+                           class="btn btn-warning text-white rounded rounded-1 shadow p-1">انتظار</a>
+                     }
+                     @if (req.StatusId != (int)RequestStatuses.Done)
+                     {
+                        <a href="@Url.Action("Done","Requests",new {area="Admin" , id=req.RequestId})"
+                           class="btn btn-success text-white rounded rounded-1 shadow p-1">انجام شد</a>
+                     }
+                     @if (req.StatusId != (int)RequestStatuses.Canceled)
+                     {
+                        <a href="@Url.Action("Cancel","Requests",new {area="Admin" , id=req.RequestId})"
+                           class="btn btn-danger text-white rounded rounded-1 shadow p-1">لغو</a>
+                     }
                   </td>
                </tr>
             }
