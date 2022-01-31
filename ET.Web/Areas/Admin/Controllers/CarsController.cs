@@ -4,6 +4,7 @@ using System.Web.Mvc;
 
 namespace ET.Web.Areas.Admin.Controllers
 {
+   [Authorize]
    public class CarsController : Controller
    {
       private readonly ICarService _carService;

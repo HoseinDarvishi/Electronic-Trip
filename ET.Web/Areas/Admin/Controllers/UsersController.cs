@@ -5,6 +5,7 @@ using System.Web.Mvc;
 
 namespace ET.Web.Areas.Admin.Controllers
 {
+   [Authorize]
    public class UsersController : Controller
    {
       private readonly IUserService _userService;

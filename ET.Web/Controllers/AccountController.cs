@@ -67,9 +67,19 @@ namespace ET.Web.Controllers
 
          if (!result.IsSuccess)
             return View(login);
+         
+         // Set Authentication Cookie
+         FormsAuthentication.SetAuthCookie(login.UserName, true);
 
-         // Set Auth
+         return RedirectToAction("Index", "Home");
+      }
+      #endregion
 
+      #region Logout
+      public RedirectToRouteResult Logout()
+      {
+         if (User.Identity.IsAuthenticated)
+            FormsAuthentication.SignOut();
          return RedirectToAction("Index", "Home");
       }
       #endregion

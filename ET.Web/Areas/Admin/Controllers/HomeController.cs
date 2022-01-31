@@ -2,6 +2,7 @@
 
 namespace ET.Web.Areas.Admin.Controllers
 {
+   [Authorize]
    public class HomeController : Controller
    {
       public ActionResult Index()

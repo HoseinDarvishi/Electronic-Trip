@@ -13,9 +13,8 @@
    <div class="d-flex flex-column justify-content-between pb-3" style="height: 100vh !important;">
       <div class="">
          <div class="bg-primary page-header py-3 shadow px-5 row d-flex justify-content-between text-white">
-            <ul class="bg-light text-dark py-1 px-2 shadow rounded rounded-pill">
-               <li><a href="#">ورود</a></li>|
-               <li><a href="#">ثبت نام</a></li>
+            <ul class="bg-light text-dark py-1 px-2 shadow rounded rounded-pill text-center">
+               @User.Identity.Name       
             </ul>
             <ul>
                <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
@@ -25,7 +24,7 @@
                   <a href="@Url.Action("Index","Roles",new {area = "Admin"})">نقش ها</a>
                </li>
                <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
-                  <a href="@Url.Action("Index","Drivers",new {area = "Admin"})">رانندگان</a>
+                  <a href="@Url.Action("Index","Requests",new {area = "Admin"})">درخواستها</a>
                </li>
                <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
                   <a href="@Url.Action("Index","Cars",new {area = "Admin"})">خودروها</a>

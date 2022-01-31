@@ -88,3 +88,7 @@ footer.footer{
    color : red;
    margin-right : 5px;
 }
+
+.cars-container{
+   border-radius:20px !important;
+}

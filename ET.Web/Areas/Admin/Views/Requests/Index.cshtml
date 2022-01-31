@@ -14,9 +14,9 @@
       @using (Html.BeginForm("Index", "Requests", new { area = "Admin" }, FormMethod.Post))
       {
          <div class="form-inline">
-            <input class="form-control px-2 mr-2" type="text" name="DetachCode" />
+            <input class="form-control px-2 mr-2" type="text" name="DetachCode" placeholder="کد رهگیری"/>
             <select class="form-control px-2 mx-2" name="DriverId">
-               <option value="0">راننده</option>
+               <option value="0">وضعیت</option>
                <option value="1">در انتظار</option>
                <option value="2">انجام شده</option>
                <option value="3">لغو شده</option>

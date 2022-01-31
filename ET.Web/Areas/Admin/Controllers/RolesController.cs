@@ -5,6 +5,7 @@ using System.Web.Mvc;
 namespace ET.Web.Areas.Admin.Controllers
 {
    //[RoutePrefix("Roles")]
+   [Authorize]
    public class RolesController : Controller
    {
       private readonly IRoleService _roleService;
