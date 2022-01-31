@@ -17,14 +17,14 @@ namespace ET.Data.Repositories
       public UserRepository(ETContext context)
       {
          _context = context;
-      } 
+      }
       #endregion
 
       public void Save() => _context.SaveChanges();
 
       public void Register(RegisterUser user)
       {
-         User newUser = new User(user.FullName, user.UserName, user.Email, user.Password,user.RoleId);
+         User newUser = new User(user.FullName, user.UserName, user.Email, user.Password, user.RoleId);
          _context.Users.Add(newUser);
          Save();
       }
@@ -36,12 +36,25 @@ namespace ET.Data.Repositories
 
       public User GetById(int userId)
       {
-         return _context.Users.FirstOrDefault(x=>x.UserId == userId);
+         return _context.Users.FirstOrDefault(x => x.UserId == userId);
       }
 
-      public User GetByUserName(string userName)
+      public UserVM GetByUserName(string userName)
       {
-         return _context.Users.FirstOrDefault(x => x.UserName == userName);
+         return _context.Users
+            .Select(x => new UserVM
+            {
+               UserId = x.UserId,
+               FullName = x.FullName,
+               Email = x.Email,
+               IsActive = x.IsActive,
+               UserName = x.UserName,
+               RoleId = x.RoleId,
+               RoleName = x.Role.RoleTitle,
+               RegisterDateEn = x.RegisterDate
+            })
+            .AsNoTracking()
+            .FirstOrDefault(x => x.UserName == userName);
       }
 
       public bool IsExists(string userName)
@@ -56,7 +69,7 @@ namespace ET.Data.Repositories
 
       public List<UserVM> GetAll(SearchUser search)
       {
-         var query = _context.Users.Include(u=>u.Role).Select(x => new UserVM
+         var query = _context.Users.Include(u => u.Role).Select(x => new UserVM
          {
             UserId = x.UserId,
             FullName = x.FullName,
@@ -70,9 +83,9 @@ namespace ET.Data.Repositories
          .AsNoTracking();
 
          if (!string.IsNullOrWhiteSpace(search.FullNameOrEmailOrUserName))
-            query = query.Where(u=>u.FullName.Contains(search.FullNameOrEmailOrUserName) || u.Email.Contains(search.FullNameOrEmailOrUserName));
+            query = query.Where(u => u.FullName.Contains(search.FullNameOrEmailOrUserName) || u.Email.Contains(search.FullNameOrEmailOrUserName));
 
-         var list = query.OrderByDescending(x=>x.UserId).ToList();
+         var list = query.OrderByDescending(x => x.UserId).ToList();
 
          list.ForEach(u => u.RegisterDate = u.RegisterDateEn.ToShamsi());
 
@@ -82,7 +95,7 @@ namespace ET.Data.Repositories
       public EditUser GetForEdit(int userId)
       {
          return _context.Users
-            .Select(x=> new EditUser
+            .Select(x => new EditUser
             {
                UserId = x.UserId,
                FullName = x.FullName,

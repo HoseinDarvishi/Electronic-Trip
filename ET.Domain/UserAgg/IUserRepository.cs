@@ -12,7 +12,7 @@ namespace ET.Domain.UserAgg
       List<UserVM> GetAllDrivers(int driverRoleId);
       User GetById(int userId);
       EditUser GetForEdit(int userId);
-      User GetByUserName(string userName);
+      UserVM GetByUserName(string userName);
       bool IsExists(string userName);
       bool IsExists(int id);
       void Save();

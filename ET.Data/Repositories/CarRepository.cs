@@ -28,16 +28,18 @@ namespace ET.Data.Repositories
          Save();
       }
 
-      public List<CarVM> GetAll(SearchCar search, bool showAll = true)
+      public List<CarVM> GetAll(SearchCar search, bool showAll)
       {
          var query = _context.Cars
             .Include(x => x.Driver)
+            .Where(x=>x.Driver.IsActive)
             .Select(x => new CarVM
             {
                CarId = x.CarId,
                CarName = x.CarName,
                Model = x.Model,
                Speed = x.Speed,
+               Color = x.Color,
                IsRemoved = x.IsRemoved,
                RegisterDateEN = x.RegisterDate,
                DriverId = x.DriverId,
@@ -56,12 +58,7 @@ namespace ET.Data.Repositories
          if (search.MinModel > 0)
             query = query.Where(x => x.Model > search.MinModel);
 
-         query.OrderByDescending(x=>x.CarId).ToList();
-
-         foreach (var car in query)
-            car.RegisterDate = car.RegisterDateEN.ToShamsi();
-
-         return query.ToList();
+         return query.OrderByDescending(x=>x.CarId).ToList();
       }
 
       public CarVM GetDetailsById(int carId)

@@ -1,5 +1,5 @@
 ﻿@model List<ET.Constracts.CarConstracts.CarVM>
-
+@using ET.Tools
 @{
    ViewBag.Title = "خودروها";
    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
@@ -10,8 +10,8 @@
       @using (Html.BeginForm("Index", "Cars", new { area = "Admin" }, FormMethod.Post))
       {
          <div class="form-inline">
-            <input class="form-control px-2" type="number" name="MinModel" />
-            <input class="form-control px-2 mr-2" type="text" name="CarName" />
+            <input class="form-control px-2" type="number" name="MinModel" placeholder="حداقل مدل ماشین"/>
+            <input class="form-control px-2 mr-2" type="text" name="CarName" placeholder="نام خودرو"/>
             <select class="form-control px-2 mx-2" name="DriverId">
                <option value="0">راننده</option>
                @foreach (var car in Model)
@@ -68,14 +68,14 @@
                         <span class="badge badge-danger p-2">غیرفعال</span>
                      }
                   </td>
-                  <td>@car.RegisterDate</td>
+                  <td>@car.RegisterDateEN.ToShamsi()</td>
                   <td>
                      <a href="@Url.Action("Edit","Cars",new {area="Admin" , id=car.CarId})"
                         class="btn btn-info text-white rounded rounded-1 shadow p-1">ویرایش</a>
                      @if (!car.IsRemoved)
                      {
                         <a href="@Url.Action("DeActive","Cars",new {area="Admin" , id=car.CarId})"
-                           class="btn btn-warning text-white rounded rounded-1 shadow p-1">غیرفعالسازی</a>
+                           class="btn btn-danger text-white rounded rounded-1 shadow p-1">غیرفعالسازی</a>
                      }
                      else
                      {

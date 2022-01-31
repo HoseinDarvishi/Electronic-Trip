@@ -66,6 +66,12 @@ namespace ET.Service.Services
          return _userRepo.GetForEdit(id);
       }
 
+      public UserVM GetByUserName(string userName)
+      {
+         if (!_userRepo.IsExists(userName)) return null;
+         return _userRepo.GetByUserName(userName);
+      }
+
       public OperationResult Login(LoginUser login)
       {
          throw new NotImplementedException();

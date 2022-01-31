@@ -1,42 +1,84 @@
-﻿* {
-   margin: 0 !important;
-   padding: 0 !important;
-   direction: rtl !important;
+﻿*{
+   margin :0 !important;
+   padding:0 !important;
+   direction :rtl !important;
    font-family: Vazir !important;
 }
 
-ul {
-   list-style: none !important;
+ul{
+   list-style:none !important;
 }
 
-   ul li {
-      display: inline !important;
-      margin: 0px 8px !important;
-   }
-
-a {
-   text-decoration-line: none !important;
-   color: inherit !important;
+ul li{
+   display : inline !important;
+   margin : 0px 8px !important;
 }
 
-.report-card {
+a{
+ text-decoration-line:none !important;  
+ color: inherit !important;
+}
+
+.report-card{
    transition: all .3s;
 }
-
-.report-card:hover {
+.report-card:hover{
    transform: translateY(-7px);
 }
 
-td , th{
-   padding : 7px !important;
+th , td {
+   padding: 7px !important
 }
 
 .form-container{
-   max-width : 500px;
+   max-width: 500px;
 }
 
-.field-validation-error{
-   color:red;
-   margin : 5px 0px;
-   font-size : 14px;
+.index-page-header{
+   background: rgb(150, 32, 97) ;
+   background: linear-gradient(to bottom left , rgb(160, 43, 111) , rgb(156, 41, 233)) ;
+}
+
+.clock {
+   max-width: 400px;
+   border-bottom-left-radius: 20px;
+   border-bottom-right-radius: 20px;
+}
+
+.clock > span{
+   font-weight: 550;  
+   font-size: 18px;
+}
+
+footer.footer{
+   max-width: 1000px;
+   border-top-left-radius: 20px;
+   border-top-right-radius: 20px;
+}
+
+.car-card{
+   border-radius: 15px;
+}
+
+.card-name{
+   background: rgba(192, 40, 124, 0.863) ;
+   /* background: linear-gradient(to left , rgb(204, 59, 144) , rgb(159, 15, 255)) ; */
+   border-bottom: 1px solid rgba(41, 41, 41, 0.397);
+   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.226);
+}
+
+.card-btn{
+   background-color: rgba(30, 144, 30, 0.842);
+   /* background: linear-gradient(to left , rgba(0, 246, 74, 0.678) , rgba(14, 100, 7, 0.699)) ; */
+   border-top: 1px solid rgba(41, 41, 41, 0.397);
+   box-shadow: 0px -10px 15px rgba(0, 0, 0, 0.226);
+}
+
+.car-logo{
+   position: absolute;
+   width: 200px;
+   height: 100px;
+   left: -30px;
+   top: 0;
+   opacity: .5;
 }

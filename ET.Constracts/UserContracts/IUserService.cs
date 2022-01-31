@@ -6,6 +6,7 @@ namespace ET.Constracts.UserContracts
    {
       List<UserVM> GetAll(SearchUser search);
       EditUser GetById(int id);
+      UserVM GetByUserName(string userName);
       OperationResult Register(RegisterUser register);
       OperationResult Login(LoginUser login);
       OperationResult Active(int id);

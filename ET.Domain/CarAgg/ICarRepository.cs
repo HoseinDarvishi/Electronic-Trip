@@ -7,7 +7,7 @@ namespace ET.Domain.CarAgg
 {
    public interface ICarRepository
    {
-      List<CarVM> GetAll(SearchCar search , bool showAll = true);
+      List<CarVM> GetAll(SearchCar search , bool showAll);
       CarVM GetDetailsById(int carId);
       Car GetById(int carId);
       EditCar GetForEdit(int carId);

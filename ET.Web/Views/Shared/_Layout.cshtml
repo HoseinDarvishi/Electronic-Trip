@@ -1,42 +1,60 @@
-﻿<!DOCTYPE html>
+﻿@using ET.Tools
+
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+   <meta name="viewport" content="width=device-width" />
+   <title>Elek-Trip</title>
+   <link href="~/Content/Site.css" rel="stylesheet"/>
+   <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+   <style>
+      * {
+         direction: rtl !important;
+      }
+   </style>
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+<body class="bg-light">
+   <div class="d-flex flex-column justify-content-between"
+        style="height: 100vh !important">
+      <div>
+         <div class="index-page-header py-3 shadow px-5 row d-flex justify-content-between text-white">
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+            @if (!User.Identity.IsAuthenticated)
+            {
+               <ul class="bg-light text-dark px-2 py-1 shadow rounded rounded-pill">
+                  <li><a href="@Url.Action("Login","Account")">ورود</a></li>|
+                  <li><a href="@Url.Action("Register","Account")">ثبت نام</a></li>
+               </ul>
+            }
+            else
+            {
+               <ul class="bg-light text-dark px-2 py-1 shadow rounded rounded-pill">
+                  <li>@User.Identity.Name</li>
+               </ul>
+            }
+
+            <a class="h5 bg-light text-dark px-4 py-1 shadow rounded rounded-pill"
+               href="/">ElecTrip</a>
+         </div>
+         <div class="clock text-center py-1 bg-white mx-auto shadow shadow-sm d-flex justify-content-center">
+            <span>امروز : </span>
+            <span class="mr-2">@DateTime.Now.ToShamsi()</span>
+         </div>
+         <div class="container mx-auto pt-4">
+
+            @RenderBody()
+
+         </div>
+      </div>
+
+      <footer class="p-2 px-5 bg-white footer mx-auto shadow shadow-lg">
+         <p class="text-center">تمامی حقوق این سایت متعلق به من است</p>
+      </footer>
+   </div>
+
+   <script src="~/Scripts/jquery-3.4.1.js"></script>
+   <script src="~/Scripts/jquery.validate.js"></script>
+   <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
 </body>
 </html>

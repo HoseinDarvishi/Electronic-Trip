@@ -34,9 +34,9 @@ namespace ET.Service.Services
          return new OperationResult().Success(Messages.SuccessEditCar);
       }
 
-      public List<CarVM> GetAll(SearchCar search)
+      public List<CarVM> GetAll(SearchCar search, bool showAll = true)
       {
-         return _carRepo.GetAll(search);
+         return _carRepo.GetAll(search , showAll);
       }
 
       public EditCar GetForEdit(int carId)

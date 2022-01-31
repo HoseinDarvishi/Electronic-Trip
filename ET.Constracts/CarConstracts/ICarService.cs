@@ -4,7 +4,7 @@ namespace ET.Constracts.CarConstracts
 {
    public interface ICarService
    {
-      List<CarVM> GetAll(SearchCar search);
+      List<CarVM> GetAll(SearchCar search , bool showAll = true);
       EditCar GetForEdit(int carId);
       OperationResult RegisterCar(CreateCar createCar);
       OperationResult EditCar(EditCar editCar);
