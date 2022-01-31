@@ -31,7 +31,7 @@ namespace ET.Service.Services
 
          if (role == null) return new OperationResult().Failed(Messages.NotFound);
 
-         Role existsRole = _roleRepo.GetByTitle(editRole.RoleTitle.Trim());
+         var existsRole = _roleRepo.GetByTitle(editRole.RoleTitle.Trim());
 
          if (existsRole != null && existsRole.RoleId != editRole.RoleId)
             return new OperationResult().Failed(Messages.ExsistRoleTitle);
@@ -51,6 +51,11 @@ namespace ET.Service.Services
       {
          var role = _roleRepo.GetById(id);
          return new EditRole { RoleId = role.RoleId, RoleTitle = role.RoleTitle };
+      }
+
+      public RoleVM GetByRoleTitle(string roleTitle)
+      {
+         return _roleRepo.GetByTitle(roleTitle);
       }
 
       public string GetNameById(int id)

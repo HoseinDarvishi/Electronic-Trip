@@ -5,7 +5,7 @@ namespace ET.Domain.UserAgg
 {
    public interface IUserRepository
    {
-      void Register(RegisterUser user);
+      void Register(CreateUser user);
       void Login(LoginUser user);
       List<UserVM> GetAll(SearchUser search);
       List<UserVM> GetAllDrivers();

@@ -82,3 +82,9 @@ footer.footer{
    top: 0;
    opacity: .5;
 }
+
+.field-validation-error{
+   font-size : 14px;
+   color : red;
+   margin-right : 5px;
+}

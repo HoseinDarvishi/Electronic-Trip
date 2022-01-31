@@ -22,7 +22,7 @@ namespace ET.Data.Repositories
 
       public void Save() => _context.SaveChanges();
 
-      public void Register(RegisterUser user)
+      public void Register(CreateUser user)
       {
          User newUser = new User(user.FullName, user.UserName, user.Email, user.Password, user.RoleId);
          _context.Users.Add(newUser);

@@ -77,7 +77,7 @@ namespace ET.Service.Services
          throw new NotImplementedException();
       }
 
-      public OperationResult Register(RegisterUser register)
+      public OperationResult Register(CreateUser register)
       {
          if (!_userRepo.IsExists(register.UserName))
          {

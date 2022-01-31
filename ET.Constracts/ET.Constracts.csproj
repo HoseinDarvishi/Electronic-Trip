@@ -64,6 +64,7 @@
     <Compile Include="UserContracts\EditUser.cs" />
     <Compile Include="UserContracts\IUserService.cs" />
     <Compile Include="UserContracts\LoginUser.cs" />
+    <Compile Include="UserContracts\CreateUser.cs" />
     <Compile Include="UserContracts\RegisterUser.cs" />
     <Compile Include="UserContracts\SearchUser.cs" />
     <Compile Include="UserContracts\UserVM.cs" />

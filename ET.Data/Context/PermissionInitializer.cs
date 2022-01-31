@@ -1,6 +1,5 @@
 ﻿using ET.Constracts.PermissionContracts;
 using ET.Domain.RoleAgg;
-using System.Collections.Generic;
 using System.Data.Entity;
 
 namespace ET.Data.Context
@@ -11,12 +10,14 @@ namespace ET.Data.Context
       {
          var roleAdmin = new Role("Admin");
          var roleUser = new Role("User");
+         var roleDriver = new Role("Driver");
 
          var permissions = AppPermissions.GetAll();
 
          permissions.ForEach(code => roleAdmin.Permissions.Add(new Permission(code)));
-         context.Roles.Add(roleAdmin);
 
+         context.Roles.Add(roleAdmin);
+         context.Roles.Add(roleDriver);
          context.Roles.Add(roleUser);
 
          context.SaveChanges();

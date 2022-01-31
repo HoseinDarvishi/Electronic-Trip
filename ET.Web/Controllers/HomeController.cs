@@ -25,7 +25,46 @@ namespace ET.Web.Controllers
       {
          var cars = _carService.GetAll(new SearchCar() , showAll:false);
          return View(cars);
-      } 
+      }
+      #endregion
+
+      #region SetRequest
+      [Authorize]
+      public ActionResult SetRequest(int carId)
+      {
+         var user = _userService.GetByUserName(User.Identity.Name);
+
+         if (user == null)
+         {
+            TempData["Message"] = "خطایی پیش آمده";
+            return RedirectToAction("Index", "Home");
+         }
+
+         var car = _carService.GetForEdit(carId);
+
+         var newRequest = new AddRequest
+         {
+            CarId = car.CarId,
+            CarName = car.CarName,
+            UserId = user.UserId,
+            FullName = user.FullName
+         };
+
+         return View(newRequest);
+      }
+
+      [HttpPost]
+      [Authorize]
+      public ActionResult SetRequest(AddRequest request)
+      {
+         if (!ModelState.IsValid) return View(request);
+
+         var result = _reqService.SetRequest(request);
+
+         TempData["Message"] = result.Message;
+
+         return RedirectToAction("Index", "Home");
+      }
       #endregion
    }
 }

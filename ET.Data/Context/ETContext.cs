@@ -24,6 +24,7 @@ namespace ET.Data.Context
       protected override void OnModelCreating(DbModelBuilder modelBuilder)
       {
          modelBuilder.Configurations.AddFromAssembly(typeof(UserMapping).Assembly);
+         Database.SetInitializer<ETContext>(new PermissionInitializer());
          base.OnModelCreating(modelBuilder);
       }
    }

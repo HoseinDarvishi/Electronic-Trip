@@ -29,12 +29,12 @@ namespace ET.Web.Areas.Admin.Controllers
       #region Register
       public ViewResult Register() 
       {
-         var register = new RegisterUser { Roles = _roleService.GetAll(string.Empty) };
+         var register = new CreateUser { Roles = _roleService.GetAll(string.Empty) };
          return View(register); 
       }
 
       [HttpPost]
-      public ActionResult Register(RegisterUser register)
+      public ActionResult Register(CreateUser register)
       {
          if (!ModelState.IsValid) return View(register);
 

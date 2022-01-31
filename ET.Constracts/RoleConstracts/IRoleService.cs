@@ -7,6 +7,7 @@ namespace ET.Constracts.RoleConstracts
    {
       List<RoleVM> GetAll(string roleTitle);
       EditRole GetById(int id);
+      RoleVM GetByRoleTitle(string roleTitle);
       OperationResult AddRole(string roleTitle);
       OperationResult EditRole(EditRole role);
       OperationResult SetPermissions(SetPermissions permissions);

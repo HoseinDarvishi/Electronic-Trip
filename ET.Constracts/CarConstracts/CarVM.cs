@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ET.Constracts.UserContracts;
+using System;
+using System.Collections.Generic;
 
 namespace ET.Constracts.CarConstracts
 {

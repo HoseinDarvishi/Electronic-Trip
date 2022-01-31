@@ -46,9 +46,16 @@ namespace ET.Data.Repositories
          return _context.Roles.FirstOrDefault(x => x.RoleId == id);
       }
 
-      public Role GetByTitle(string title)
+      public RoleVM GetByTitle(string title)
       {
-         return _context.Roles.FirstOrDefault(x => x.RoleTitle.Contains(title));
+         return _context.Roles
+            .Select(x=>new RoleVM 
+            {
+               RoleId = x.RoleId,
+               RoleTitle = x.RoleTitle
+            })
+            .AsNoTracking()
+            .FirstOrDefault(x => x.RoleTitle == title);
       }
 
       public bool IsExsist(string roleTitle)
@@ -68,10 +75,6 @@ namespace ET.Data.Repositories
          var role = GetById(roleId);
 
          role.Permissions = permissions;
-
-         //role.Permissions.Clear();
-         //permissions.ForEach(p => role.Permissions.Add(p));
-
          Save();
       }
    }

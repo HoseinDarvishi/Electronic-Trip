@@ -12,13 +12,6 @@
          <div class="form-inline">
             <input class="form-control px-2" type="number" name="MinModel" placeholder="حداقل مدل ماشین"/>
             <input class="form-control px-2 mr-2" type="text" name="CarName" placeholder="نام خودرو"/>
-            <select class="form-control px-2 mx-2" name="DriverId">
-               <option value="0">راننده</option>
-               @foreach (var car in Model)
-               {
-                  <option value="@car.DriverId">@car.DriverName</option>
-               }
-            </select>
             <input type="submit" value="جستجو" class="mx-3 btn btn-warning text-dark px-3 py-1 mt-2 mt-md-0">
          </div>
       }
