@@ -12,6 +12,7 @@ namespace ET.Constracts.UserContracts
       public bool IsActive { get; set; }
       public int RoleId { get; set; }
       public string RoleName { get; set; }
+      public string Password { get; set; }
       public DateTime RegisterDateEn { get; set; }
    }
 }

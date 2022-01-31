@@ -67,6 +67,19 @@ namespace ET.Data.Repositories
          return _context.Users.Any(x => x.UserId == id);
       }
 
+      public UserVM GetForLogin(LoginUser login)
+      {
+         return _context.Users
+            .Select(x=> new UserVM
+            {
+               IsActive = x.IsActive,
+               UserName = x.UserName,
+               Password = x.Password
+            })
+            .AsNoTracking()
+            .FirstOrDefault(x => x.UserName == login.UserName && x.Password == login.Password);
+      }
+
       public List<UserVM> GetAll(SearchUser search)
       {
          var query = _context.Users.Include(u => u.Role).Select(x => new UserVM

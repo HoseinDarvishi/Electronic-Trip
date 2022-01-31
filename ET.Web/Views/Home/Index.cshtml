@@ -7,6 +7,13 @@
 
 <div class="row cards">
 
+   @if (TempData["Message"] != null)
+   {
+      <div class="container mt-2 p-2 mx-auto rounded rounded-2 bg-white shadow-sm">
+         <p class="alert p-1 alert-warning text-center">@TempData["Message"]</p>
+      </div>
+   }
+
    @foreach (var car in Model)
    {
       <div class="col-12 col-lg-4 col-md-6 p-3">

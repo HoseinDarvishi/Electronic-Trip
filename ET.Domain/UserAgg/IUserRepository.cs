@@ -7,6 +7,7 @@ namespace ET.Domain.UserAgg
    {
       void Register(CreateUser user);
       void Login(LoginUser user);
+      UserVM GetForLogin(LoginUser login);
       List<UserVM> GetAll(SearchUser search);
       List<UserVM> GetAllDrivers();
       List<UserVM> GetAllDrivers(int driverRoleId);

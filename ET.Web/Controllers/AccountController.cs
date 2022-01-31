@@ -48,7 +48,30 @@ namespace ET.Web.Controllers
 
          TempData["Message"] += Environment.NewLine + "اکنون وارد شوید";
          return RedirectToAction("Login", "Account");
-      } 
+      }
+      #endregion
+
+      #region Login
+      [Route("Login")]
+      public ViewResult Login() => View();
+      
+      [Route("Login")]
+      [HttpPost]
+      public ActionResult Login(LoginUser login)
+      {
+         if (!ModelState.IsValid) return View(login);
+
+         var result = _userService.Login(login);
+
+         TempData["Message"] = result.Message;
+
+         if (!result.IsSuccess)
+            return View(login);
+
+         // Set Auth
+
+         return RedirectToAction("Index", "Home");
+      }
       #endregion
    }
 }

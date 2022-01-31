@@ -16,5 +16,7 @@
       public const string ExsistCar = "اتومبیلی با همین مشخصات قبلا در سایت ثبت شده است";
       public const string SuccessRegisterCar = "اتومبیل با موفقیت ثبت شد";
       public const string SuccessEditCar = "اتومبیل با موفقیت ویرایش شد";
+      public const string Failedlogin = "کاربری با مشخصات داده شده یافت نشد";
+      public const string NotActiveUser = "حساب کاربری شما فعال نشده است . منتظر تاییدیه مدیر باشید";
    }
 }

@@ -74,7 +74,17 @@ namespace ET.Service.Services
 
       public OperationResult Login(LoginUser login)
       {
-         throw new NotImplementedException();
+         login.Password = login.Password.EncodePassword();
+
+         var user = _userRepo.GetForLogin(login);
+
+         if (user == null)
+            return new OperationResult().Failed(Messages.Failedlogin);
+
+         if (!user.IsActive)
+            return new OperationResult().Failed(Messages.NotActiveUser);
+
+         return new OperationResult().Success(Messages.SuccessLoginUser);
       }
 
       public OperationResult Register(CreateUser register)
