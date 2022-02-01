@@ -1,11 +1,11 @@
 ﻿@using ET.Tools
-
+@using ET.Web.Auth
 <!DOCTYPE html>
 <html>
 <head>
    <meta name="viewport" content="width=device-width" />
    <title>Elek-Trip</title>
-   <link href="~/Content/Site.css" rel="stylesheet"/>
+   <link href="~/Content/Site.css" rel="stylesheet" />
    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
    <style>
       * {
@@ -19,7 +19,7 @@
       <div>
          <div class="index-page-header py-3 shadow px-5 row d-flex justify-content-between text-white">
 
-            @if (!User.Identity.IsAuthenticated)
+            @if (!AuthHelper.IsAuthenticate())
             {
                <ul class="bg-light text-dark px-2 py-1 shadow rounded rounded-pill">
                   <li><a href="@Url.Action("Login","Account")">ورود</a></li>|
@@ -28,8 +28,9 @@
             }
             else
             {
-               <ul class="bg-light text-dark px-2 py-1 shadow rounded rounded-pill">
-                  <li>@User.Identity.Name</li>
+               <ul class="bg-light text-dark px-3 py-1 shadow rounded rounded-pill">
+                  <li>@AuthHelper.AuthName</li>|
+                  <li><a href="@Url.Action("Logout","Account")">خروج</a></li>
                </ul>
             }
 

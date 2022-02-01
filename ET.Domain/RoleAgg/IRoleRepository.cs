@@ -8,6 +8,7 @@ namespace ET.Domain.RoleAgg
       List<RoleVM> GetAll(string roleTitle);
       Role GetById(int id);
       RoleVM GetByTitle(string title);
+      List<int> GetPermissionCodesByUserName(string userName);
       void AddRole(string roleTitle);
       void SetPermissions(int roleId , List<Permission> permissions);
       bool IsExsist(string roleTitle);

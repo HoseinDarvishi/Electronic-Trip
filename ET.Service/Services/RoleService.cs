@@ -65,6 +65,12 @@ namespace ET.Service.Services
          return string.Empty;
       }
 
+      public List<int> GetPermissionCodesByUserName(string userName)
+      {
+         var list =  _roleRepo.GetPermissionCodesByUserName(userName);
+         return list;
+      }
+
       public OperationResult SetPermissions(SetPermissions permissionsVM)
       {
          var role = _roleRepo.GetById(permissionsVM.RoleId);

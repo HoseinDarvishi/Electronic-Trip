@@ -12,5 +12,6 @@ namespace ET.Constracts.RoleConstracts
       OperationResult EditRole(EditRole role);
       OperationResult SetPermissions(SetPermissions permissions);
       string GetNameById(int id);
+      List<int> GetPermissionCodesByUserName(string userName);
    }
 }

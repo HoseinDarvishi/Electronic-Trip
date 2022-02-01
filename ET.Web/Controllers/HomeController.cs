@@ -1,6 +1,7 @@
 ﻿using ET.Constracts.CarConstracts;
 using ET.Constracts.RequestContracts;
 using ET.Constracts.UserContracts;
+using ET.Web.Auth;
 using System.Web.Mvc;
 
 namespace ET.Web.Controllers
@@ -23,6 +24,10 @@ namespace ET.Web.Controllers
       #region Index-CarList
       public ActionResult Index()
       {
+         string refs = AuthHelper.AuthName;
+         var sdad = AuthHelper.PermissionCodes;
+         var sasd = AuthHelper.IsAuthenticate();
+
          var cars = _carService.GetAll(new SearchCar() , showAll:false);
          return View(cars);
       }

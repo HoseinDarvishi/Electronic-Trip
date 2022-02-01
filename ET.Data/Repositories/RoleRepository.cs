@@ -15,7 +15,7 @@ namespace ET.Data.Repositories
       public RoleRepository(ETContext context)
       {
          _context = context;
-      } 
+      }
       #endregion
 
       public void AddRole(string roleTitle)
@@ -27,7 +27,7 @@ namespace ET.Data.Repositories
 
       public List<RoleVM> GetAll(string roleTitle)
       {
-         var query = _context.Roles.Include(x=>x.Users).Select(x => new RoleVM
+         var query = _context.Roles.Include(x => x.Users).Select(x => new RoleVM
          {
             RoleId = x.RoleId,
             RoleTitle = x.RoleTitle,
@@ -49,13 +49,25 @@ namespace ET.Data.Repositories
       public RoleVM GetByTitle(string title)
       {
          return _context.Roles
-            .Select(x=>new RoleVM 
+            .Select(x => new RoleVM
             {
                RoleId = x.RoleId,
                RoleTitle = x.RoleTitle
             })
             .AsNoTracking()
             .FirstOrDefault(x => x.RoleTitle == title);
+      }
+
+      public List<int> GetPermissionCodesByUserName(string userName)
+      {
+         var user = _context.Users.FirstOrDefault(u => u.UserName == userName);
+         var role = _context.Roles.Include(r => r.Permissions).FirstOrDefault(r => r.RoleId == user.RoleId);
+
+         var list = new List<int>();
+
+         role.Permissions.ForEach(p => list.Add(p.Code));
+
+         return list;
       }
 
       public bool IsExsist(string roleTitle)
@@ -70,7 +82,7 @@ namespace ET.Data.Repositories
 
       public void Save() => _context.SaveChanges();
 
-      public void SetPermissions(int roleId , List<Permission> permissions)
+      public void SetPermissions(int roleId, List<Permission> permissions)
       {
          var role = GetById(roleId);
 

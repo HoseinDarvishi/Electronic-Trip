@@ -1,5 +1,6 @@
 ﻿using ET.Constracts.RoleConstracts;
 using ET.Constracts.UserContracts;
+using Newtonsoft.Json;
 using System;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -12,7 +13,7 @@ namespace ET.Web.Controllers
       private readonly IRoleService _roleService;
 
       #region Ctor
-      public AccountController(IUserService userService,IRoleService roleService)
+      public AccountController(IUserService userService, IRoleService roleService)
       {
          _userService = userService;
          _roleService = roleService;
@@ -54,7 +55,7 @@ namespace ET.Web.Controllers
       #region Login
       [Route("Login")]
       public ViewResult Login() => View();
-      
+
       [Route("Login")]
       [HttpPost]
       public ActionResult Login(LoginUser login)
@@ -67,9 +68,13 @@ namespace ET.Web.Controllers
 
          if (!result.IsSuccess)
             return View(login);
-         
+
          // Set Authentication Cookie
-         FormsAuthentication.SetAuthCookie(login.UserName, true);
+         var permissionCodes = _roleService.GetPermissionCodesByUserName(login.UserName);
+         string serializePermissions = JsonConvert.SerializeObject(permissionCodes);
+
+
+         FormsAuthentication.SetAuthCookie($"{login.UserName}|H|{serializePermissions}", true, "/");
 
          return RedirectToAction("Index", "Home");
       }
