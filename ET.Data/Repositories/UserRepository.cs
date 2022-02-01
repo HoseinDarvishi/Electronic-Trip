@@ -1,5 +1,6 @@
 ﻿using ET.Constracts.UserContracts;
 using ET.Data.Context;
+using ET.Domain.RoleAgg;
 using ET.Domain.UserAgg;
 using ET.Tools;
 using System;
@@ -143,6 +144,35 @@ namespace ET.Data.Repositories
             })
             .AsNoTracking()
             .ToList();
+      }
+
+      public int UserCount(bool onlyDeActives)
+      {
+         if (onlyDeActives)
+            return _context.Users.Where(u => !u.IsActive).Count();
+         else
+            return _context.Users.Count();
+      }
+
+      public int DriverCount(bool onlyDeActives , string driverRoleTitle = "")
+      {
+         Role role;
+
+         if (!string.IsNullOrWhiteSpace(driverRoleTitle))
+            role = _context.Roles.AsNoTracking().FirstOrDefault(x => x.RoleTitle == driverRoleTitle);
+         else
+         {
+            role = _context.Roles.AsNoTracking().FirstOrDefault(x => x.RoleTitle == "Driver");
+            if(role == null)
+               role = _context.Roles.AsNoTracking().FirstOrDefault(x => x.RoleTitle == "راننده");
+         }
+
+         if (role == null) return 0;
+
+         if (onlyDeActives)
+            return _context.Users.Where(u => u.RoleId == role.RoleId && !u.IsActive).Count();
+         else
+            return _context.Users.Where(u=>u.RoleId == role.RoleId).Count();
       }
    }
 }

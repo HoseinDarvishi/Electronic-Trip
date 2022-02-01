@@ -1,51 +1,22 @@
-﻿@{
+﻿@model Dictionary<string , int>
+@using ET.Tools
+@{
    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
    ViewBag.Title = "پنل مدیریت";
 }
 
 <div class="reports row">
-   <div class="col-md-4 p-3">
-      <div class="rounded rounded-2 shadow p-3 bg-white report-card">
-         <p class="text-right">تعداد کاربران تا این لحظه : </p>
-         <h3 class="my-3 text-center">24902</h3>
-         <hr class="border border-light">
-         <p class="mt-2"><small class="text-muted">تاریخ بروزرسانی : 1400/12/02</small></p>
-      </div>
-   </div>
 
-   <div class="col-md-4 p-3">
-      <div class="rounded rounded-2 shadow p-3 bg-white report-card">
-         <p class="text-right">تعداد درخواست ها تا این لحظه : </p>
-         <h3 class="my-3 text-center">1002</h3>
-         <hr class="border border-light">
-         <p class="mt-2"><small class="text-muted">تاریخ بروزرسانی : 1400/12/02</small></p>
+   @foreach (var report in Model)
+   {
+      <div class="col-md-4 p-3">
+         <div class="rounded rounded-2 shadow p-3 bg-white report-card">
+            <p class="text-right">@report.Key : </p>
+            <h3 class="my-3 text-center">@report.Value</h3>
+            <hr class="border border-light">
+            <p class="mt-2"><small class="text-muted">تاریخ بروزرسانی : @DateTime.Now.ToShamsi()</small></p>
+         </div>
       </div>
-   </div>
+   }
 
-   <div class="col-md-4 p-3">
-      <div class="rounded rounded-2 shadow p-3 bg-white report-card">
-         <p class="text-right">تعداد سفرهای موفق تا این لحظه : </p>
-         <h3 class="my-3 text-center">982</h3>
-         <hr class="border border-light">
-         <p class="mt-2"><small class="text-muted">تاریخ بروزرسانی : 1400/12/02</small></p>
-      </div>
-   </div>
-
-   <div class="col-md-4 p-3">
-      <div class="rounded rounded-2 shadow p-3 bg-white report-card">
-         <p class="text-right">تعداد خودروها ها تا این لحظه : </p>
-         <h3 class="my-3 text-center">29</h3>
-         <hr class="border border-light">
-         <p class="mt-2"><small class="text-muted">تاریخ بروزرسانی : 1400/12/02</small></p>
-      </div>
-   </div>
-
-   <div class="col-md-4 p-3">
-      <div class="rounded rounded-2 shadow p-3 bg-white report-card">
-         <p class="text-right">تعداد راننده ها ها تا این لحظه : </p>
-         <h3 class="my-3 text-center">33</h3>
-         <hr class="border border-light">
-         <p class="mt-2"><small class="text-muted">تاریخ بروزرسانی : 1400/12/02</small></p>
-      </div>
-   </div>
 </div>

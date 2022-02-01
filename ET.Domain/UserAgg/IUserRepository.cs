@@ -17,5 +17,7 @@ namespace ET.Domain.UserAgg
       bool IsExists(string userName);
       bool IsExists(int id);
       void Save();
+      int UserCount(bool onlyDeActives);
+      int DriverCount(bool onlyDeActives, string driverRoleTitle = "");
    }
 }

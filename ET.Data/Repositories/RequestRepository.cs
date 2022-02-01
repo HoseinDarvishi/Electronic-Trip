@@ -89,6 +89,16 @@ namespace ET.Data.Repositories
             .FirstOrDefault(x => x.RequestId == id);
       }
 
+      public int RequestCount(RequestStatuses status)
+      {
+         return _context.Requests.Where(x => x.StatusId == (int)status).Count();
+      }
+
+      public int RequestCount()
+      {
+         return _context.Requests.Count();
+      }
+
       public void Save() => _context.SaveChanges();
    }
 }

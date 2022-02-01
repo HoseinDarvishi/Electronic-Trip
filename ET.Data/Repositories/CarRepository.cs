@@ -140,5 +140,10 @@ namespace ET.Data.Repositories
             .AsNoTracking()
             .FirstOrDefault(x => x.CarId == carId);
       }
+
+      public int CarCount()
+      {
+         return _context.Cars.Count();
+      }
    }
 }

@@ -16,6 +16,7 @@ namespace ET.Domain.CarAgg
       bool IsExsist(int id);
       bool IsExsist(string carName);
       bool IsExsist(Expression<Func<Car,bool>> expression);
+      int CarCount();
       void Save();
    }
 }

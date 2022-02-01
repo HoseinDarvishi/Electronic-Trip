@@ -53,6 +53,8 @@
     <Compile Include="PermissionContracts\PermissionVM.cs" />
     <Compile Include="PermissionContracts\SetPermissions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportContracts\IReportService.cs" />
+    <Compile Include="ReportContracts\ReportVM.cs" />
     <Compile Include="RequestContracts\AddRequest.cs" />
     <Compile Include="RequestContracts\IRequestService.cs" />
     <Compile Include="RequestContracts\RequestVM.cs" />

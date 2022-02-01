@@ -34,7 +34,7 @@ namespace ET.Web.Controllers
       [Authorize]
       public ActionResult SetRequest(int carId)
       {
-         var user = _userService.GetByUserName(User.Identity.Name);
+         var user = _userService.GetByUserName(AuthHelper.AuthName.Trim());
 
          if (user == null)
          {

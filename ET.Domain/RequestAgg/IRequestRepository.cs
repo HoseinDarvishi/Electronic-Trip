@@ -9,6 +9,8 @@ namespace ET.Domain.RequestAgg
       RequestVM GetDetailById(int id);
       List<RequestVM> GetAll(SearchRequest search);
       string AddRequest(AddRequest request);
+      int RequestCount(RequestStatuses status);
+      int RequestCount();
       void Save();
    }
 }
