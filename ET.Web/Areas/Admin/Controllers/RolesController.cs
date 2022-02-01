@@ -1,5 +1,6 @@
 ﻿using ET.Constracts.PermissionContracts;
 using ET.Constracts.RoleConstracts;
+using ET.Web.Auth;
 using System.Web.Mvc;
 
 namespace ET.Web.Areas.Admin.Controllers
@@ -20,6 +21,7 @@ namespace ET.Web.Areas.Admin.Controllers
       #endregion
 
       #region List
+      [AuthFilter(AppPermissions.ListRole)]
       public ActionResult Index(string roleTitle)
       {
          var roles = _roleService.GetAll(roleTitle);
@@ -28,9 +30,11 @@ namespace ET.Web.Areas.Admin.Controllers
       #endregion
 
       #region Craete
+      [AuthFilter(AppPermissions.AddRole)]
       public ViewResult Create() => View();
 
       [HttpPost]
+      [AuthFilter(AppPermissions.AddRole)]
       public ActionResult Create(CreateRole role)
       {
          if (!ModelState.IsValid) return View(role);
@@ -44,6 +48,7 @@ namespace ET.Web.Areas.Admin.Controllers
       #endregion
 
       #region Edit
+      [AuthFilter(AppPermissions.EditRole)]
       public ActionResult Edit(int id)
       {
          var role = _roleService.GetById(id);
@@ -51,6 +56,7 @@ namespace ET.Web.Areas.Admin.Controllers
       }
 
       [HttpPost]
+      [AuthFilter(AppPermissions.EditRole)]
       public ActionResult Edit(EditRole role)
       {
          if (!ModelState.IsValid) return View(role);
@@ -63,6 +69,7 @@ namespace ET.Web.Areas.Admin.Controllers
       #endregion
 
       #region SetPermissions
+      [AuthFilter(AppPermissions.SetPermission)]
       public ActionResult SetPermissions(int id)
       {
          var setPerms = new SetPermissions
@@ -74,6 +81,7 @@ namespace ET.Web.Areas.Admin.Controllers
       }
 
       [HttpPost]
+      [AuthFilter(AppPermissions.SetPermission)]
       public ActionResult SetPermissions(SetPermissions setPermissions)
       {
          var result = _roleService.SetPermissions(setPermissions);

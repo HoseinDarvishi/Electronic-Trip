@@ -7,16 +7,16 @@ namespace ET.Service.Services
    {
       List<PermissionVM> IPermissionExposer.Expose()
       {
-         var AppPermissions = new AppPermissions();
-
          return new List<PermissionVM>
          {
              new PermissionVM(AppPermissions.ListUser,"مشاهده لیست کاربران"),
              new PermissionVM(AppPermissions.AddUser,"اضافه کردن کاربر"),
              new PermissionVM(AppPermissions.ActivitionUser,"فعال یا غیرفعالسازی کاربران"),
+             new PermissionVM(AppPermissions.EditUser,"ویرایش کاربران"),
              new PermissionVM(AppPermissions.ListRole,"مشاهده لیست نقش ها"),
              new PermissionVM(AppPermissions.AddRole,"اضافه کردن نقش"),
              new PermissionVM(AppPermissions.SetPermission,"تعیین دسترسی نقش ها"),
+             new PermissionVM(AppPermissions.EditRole,"ویرایش نقش ها"),
              new PermissionVM(AppPermissions.ListCar,"مشاهده لیست اتومبیلها"),
              new PermissionVM(AppPermissions.AddCar,"اصافه کردن اتومبیل"),
              new PermissionVM(AppPermissions.EditCar,"ویرایش اتومبیل"),

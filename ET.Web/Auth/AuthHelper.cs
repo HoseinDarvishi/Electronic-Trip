@@ -13,7 +13,7 @@ namespace ET.Web.Auth
          {
             if (!IsAuthenticate()) return null;
             string cookieVal = HttpContext.Current.User.Identity.Name;
-            return cookieVal.Split(new[] { "|H|" }, 2, StringSplitOptions.None)[0];
+            return cookieVal.Split(new[] { "|H|" }, StringSplitOptions.None)[0];
          }
       }
 
@@ -23,7 +23,7 @@ namespace ET.Web.Auth
          {
             if (!IsAuthenticate()) return null;
             var cookieVal = HttpContext.Current.User.Identity.Name;
-            string permCodes = cookieVal.Split(new[] { "|H|" }, 2, StringSplitOptions.None)[1];
+            string permCodes = cookieVal.Split(new[] { "|H|" },StringSplitOptions.None)[1];
             return JsonConvert.DeserializeObject<List<int>>(permCodes);
          }
       }

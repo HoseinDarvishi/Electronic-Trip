@@ -5,32 +5,34 @@ namespace ET.Constracts.PermissionContracts
    public class AppPermissions
    {
       // User
-      public int ListUser { get; } = 101;
-      public int AddUser { get; } = 102;
-      public int ActivitionUser { get; } = 103;
+      public const int ListUser = 101;
+      public const int AddUser = 102;
+      public const int ActivitionUser = 103;
+      public const int EditUser = 104;
 
       // Car
-      public int ListCar { get; } = 201;
-      public int AddCar { get; } = 202;
-      public int EditCar { get; } = 203;
-      public int RemoveCar { get; } = 204;
-      public int RestoreCar { get; } = 205;
+      public const int ListCar = 201;
+      public const int AddCar = 202;
+      public const int EditCar = 203;
+      public const int RemoveCar = 204;
+      public const int RestoreCar = 205;
 
       // Request
-      public int ListRequest { get; } = 301;
-      public int CancelRequest { get; } = 302;
-      public int DoneRequest { get; } = 303;
+      public const int ListRequest = 301;
+      public const int CancelRequest = 302;
+      public const int DoneRequest = 303;
 
       // Role
-      public int ListRole { get; } = 401;
-      public int AddRole { get; } = 402;
-      public int SetPermission { get; } = 403;
+      public const int ListRole = 401;
+      public const int AddRole = 402;
+      public const int SetPermission = 403;
+      public const int EditRole = 404;
 
       public static List<int> GetAll()
       {
          return new List<int>
          {
-            101 , 102 , 103 ,201 , 202, 203 , 204 , 205 , 301 , 302 , 303 , 401 , 402 ,403
+            101 , 102 , 103 ,104 ,201 , 202, 203 , 204 , 205 , 301 , 302 , 303 , 401 , 402 ,403 , 404
          };
       }
    }

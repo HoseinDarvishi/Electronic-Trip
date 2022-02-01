@@ -71,10 +71,14 @@ namespace ET.Web.Controllers
 
          // Set Authentication Cookie
          var permissionCodes = _roleService.GetPermissionCodesByUserName(login.UserName);
-         string serializePermissions = JsonConvert.SerializeObject(permissionCodes);
 
-
-         FormsAuthentication.SetAuthCookie($"{login.UserName}|H|{serializePermissions}", true, "/");
+         if (permissionCodes != null)
+         {
+            string serializePermissions = JsonConvert.SerializeObject(permissionCodes);
+            FormsAuthentication.SetAuthCookie($"{login.UserName}|H|{serializePermissions}", true, "/");
+         }
+         else
+            FormsAuthentication.SetAuthCookie($"{login.UserName}",true,"/");
 
          return RedirectToAction("Index", "Home");
       }

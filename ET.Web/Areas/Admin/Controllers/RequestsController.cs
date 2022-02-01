@@ -1,4 +1,6 @@
-﻿using ET.Constracts.RequestContracts;
+﻿using ET.Constracts.PermissionContracts;
+using ET.Constracts.RequestContracts;
+using ET.Web.Auth;
 using System.Web.Mvc;
 
 namespace ET.Web.Areas.Admin.Controllers
@@ -16,6 +18,7 @@ namespace ET.Web.Areas.Admin.Controllers
       #endregion
 
       #region List
+      [AuthFilter(AppPermissions.ListRequest)]
       public ActionResult Index(SearchRequest search)
       {
          var reqs = _reqService.GetAll(search);
@@ -24,6 +27,7 @@ namespace ET.Web.Areas.Admin.Controllers
       #endregion
 
       #region Status
+      [AuthFilter(AppPermissions.DoneRequest)]
       public ActionResult Done(int id)
       {
          var result = _reqService.DoneRequest(id);
@@ -31,6 +35,7 @@ namespace ET.Web.Areas.Admin.Controllers
          return RedirectToAction("Index", "Requests", new { area = "Admin" });
       }
 
+      [AuthFilter(AppPermissions.CancelRequest)]
       public ActionResult Cancel(int id)
       {
          var result = _reqService.CancelRequest(id);
@@ -38,6 +43,7 @@ namespace ET.Web.Areas.Admin.Controllers
          return RedirectToAction("Index", "Requests", new { area = "Admin" });
       }
 
+      [AuthFilter(AppPermissions.CancelRequest)]
       public ActionResult Wait(int id)
       {
          var result = _reqService.WaitRequest(id);

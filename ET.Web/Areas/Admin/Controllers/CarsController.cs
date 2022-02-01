@@ -1,5 +1,7 @@
 ﻿using ET.Constracts.CarConstracts;
+using ET.Constracts.PermissionContracts;
 using ET.Constracts.UserContracts;
+using ET.Web.Auth;
 using System.Web.Mvc;
 
 namespace ET.Web.Areas.Admin.Controllers
@@ -19,6 +21,7 @@ namespace ET.Web.Areas.Admin.Controllers
       #endregion
 
       #region List
+      [AuthFilter(AppPermissions.ListCar)]
       public ActionResult Index(SearchCar search)
       {
          var cars = _carService.GetAll(search);
@@ -27,6 +30,7 @@ namespace ET.Web.Areas.Admin.Controllers
       #endregion
 
       #region Activation
+      [AuthFilter(AppPermissions.RestoreCar)]
       public ActionResult Active(int id)
       {
          var result = _carService.Restore(id);
@@ -34,6 +38,7 @@ namespace ET.Web.Areas.Admin.Controllers
          return RedirectToAction("Index", "Cars", new { area = "Admin" });
       }
 
+      [AuthFilter(AppPermissions.RemoveCar)]
       public ActionResult DeActive(int id)
       {
          var result = _carService.Remove(id);
@@ -43,6 +48,7 @@ namespace ET.Web.Areas.Admin.Controllers
       #endregion
 
       #region Register
+      [AuthFilter(AppPermissions.AddCar)]
       public ActionResult Register() 
       {
          var drivers = _userService.GetAllDrivers();
@@ -59,6 +65,7 @@ namespace ET.Web.Areas.Admin.Controllers
       }
 
       [HttpPost]
+      [AuthFilter(AppPermissions.AddCar)]
       public ActionResult Register(CreateCar car)
       {
          if (!ModelState.IsValid) 
@@ -81,6 +88,7 @@ namespace ET.Web.Areas.Admin.Controllers
       #endregion
 
       #region Edit
+      [AuthFilter(AppPermissions.EditCar)]
       public ActionResult Edit(int carId)
       {
          var car = _carService.GetForEdit(carId);
@@ -89,6 +97,7 @@ namespace ET.Web.Areas.Admin.Controllers
       }
 
       [HttpPost]
+      [AuthFilter(AppPermissions.EditCar)]
       public ActionResult Edit(EditCar edit)
       {
          if(!ModelState.IsValid)

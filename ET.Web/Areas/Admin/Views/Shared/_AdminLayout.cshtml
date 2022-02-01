@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using ET.Web.Auth 
+
+<!DOCTYPE html>
 <html>
 <head>
    <meta name="viewport" content="width=device-width" />
@@ -14,7 +16,8 @@
       <div class="">
          <div class="bg-primary page-header py-3 shadow px-5 row d-flex justify-content-between text-white">
             <ul class="bg-light text-dark py-1 px-2 shadow rounded rounded-pill text-center">
-               @User.Identity.Name       
+               <li>@AuthHelper.AuthName</li> |
+               <li><a href="/Account/logout">خروج</a></li>
             </ul>
             <ul>
                <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">

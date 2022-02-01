@@ -1,5 +1,7 @@
-﻿using ET.Constracts.RoleConstracts;
+﻿using ET.Constracts.PermissionContracts;
+using ET.Constracts.RoleConstracts;
 using ET.Constracts.UserContracts;
+using ET.Web.Auth;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -20,6 +22,7 @@ namespace ET.Web.Areas.Admin.Controllers
       #endregion
 
       #region List
+      [AuthFilter(AppPermissions.ListUser)]
       public ActionResult Index(SearchUser search)
       {
          List<UserVM> users = _userService.GetAll(search);
@@ -28,6 +31,7 @@ namespace ET.Web.Areas.Admin.Controllers
       #endregion
 
       #region Register
+      [AuthFilter(AppPermissions.AddUser)]
       public ViewResult Register() 
       {
          var register = new CreateUser { Roles = _roleService.GetAll(string.Empty) };
@@ -35,6 +39,7 @@ namespace ET.Web.Areas.Admin.Controllers
       }
 
       [HttpPost]
+      [AuthFilter(AppPermissions.AddUser)]
       public ActionResult Register(CreateUser register)
       {
          if (!ModelState.IsValid) return View(register);
@@ -48,6 +53,7 @@ namespace ET.Web.Areas.Admin.Controllers
       #endregion
 
       #region Edit
+      [AuthFilter(AppPermissions.EditUser)]
       public ActionResult Edit(int id)
       {
          var user = _userService.GetById(id);
@@ -56,6 +62,7 @@ namespace ET.Web.Areas.Admin.Controllers
       }
 
       [HttpPost]
+      [AuthFilter(AppPermissions.EditUser)]
       public ActionResult Edit(EditUser edit)
       {
          if (!ModelState.IsValid) 
@@ -77,6 +84,7 @@ namespace ET.Web.Areas.Admin.Controllers
       #endregion
 
       #region Activation
+      [AuthFilter(AppPermissions.ActivitionUser)]
       public ActionResult Active(int id)
       {
          var result = _userService.Active(id);
@@ -84,6 +92,7 @@ namespace ET.Web.Areas.Admin.Controllers
          return RedirectToAction("Index", "Users", new {area="Admin"});
       }
 
+      [AuthFilter(AppPermissions.ActivitionUser)]
       public ActionResult DeActive(int id)
       {
          var result = _userService.DeActive(id);
