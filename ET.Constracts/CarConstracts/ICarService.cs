@@ -6,6 +6,7 @@ namespace ET.Constracts.CarConstracts
    {
       List<CarVM> GetAll(SearchCar search , bool showAll = true);
       EditCar GetForEdit(int carId);
+      CarVM GetDetails(int carId);
       OperationResult RegisterCar(CreateCar createCar);
       OperationResult EditCar(EditCar editCar);
       OperationResult Remove(int carId);

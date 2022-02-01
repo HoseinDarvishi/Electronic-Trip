@@ -1,0 +1,49 @@
+﻿@model ET.Constracts.RequestContracts.AddRequest
+
+@{
+   ViewBag.Title = "ثبت درخواست";
+   Layout = "~/Views/Shared/_Layout.cshtml";
+   Html.EnableClientValidation(true);
+   Html.EnableUnobtrusiveJavaScript(true);
+   Html.SetValidationMessageElement("span");
+}
+
+<div class="mx-auto text-right rounded rounded-2 shadow bg-white p-4 form-container">
+   <h3 class="text-center">ثبت درخواست</h3>
+   <hr class="my-2">
+
+   @if (TempData["Message"] != null)
+   {
+      <div class="container mt-2 p-2 mx-auto rounded rounded-2 bg-white shadow-sm">
+         <p class="alert p-1 alert-warning text-center">@TempData["Message"]</p>
+      </div>
+   }
+
+   @using (Html.BeginForm("SetRequest", "Home", FormMethod.Post))
+   {
+      @Html.AntiForgeryToken();
+      <div class="form-group">
+         @Html.LabelFor(m => m.FullName, new { @class = "mb-1 mt-2" })
+         @Html.TextBoxFor(m => m.FullName, new { @class = "form-control px-2", @readonly = "readonly" })
+         @Html.ValidationMessageFor(m => m.FullName)
+         @Html.HiddenFor(m => m.UserId, new { @readonly = "readonly" })
+      </div>
+      <div class="form-group">
+         @Html.LabelFor(m => m.CarName, new { @class = "mb-1 mt-2" })
+         @Html.TextBoxFor(m => m.CarName, new { @class = "form-control px-2", @readonly = "readonly" })
+         @Html.ValidationMessageFor(m => m.CarName)
+         @Html.HiddenFor(m => m.CarId, new { @readonly = "readonly" })
+      </div>
+      <div class="form-group">
+         @Html.LabelFor(m => m.DriverName, new { @class = "mb-1 mt-2" })
+         @Html.TextBoxFor(m => m.DriverName, new { @class = "form-control px-2", @readonly = "readonly" })
+         @Html.ValidationMessageFor(m => m.DriverName)
+      </div>
+      <div class="form-group">
+         @Html.LabelFor(m => m.Address, new { @class = "mb-1 mt-2" })
+         @Html.TextAreaFor(m => m.Address, new { @class = "form-control px-2"})
+         @Html.ValidationMessageFor(m => m.Address)
+      </div>
+      <input type="submit" class="form-control btn btn-success mt-5" value="ثبت درخواست">
+   }
+</div>

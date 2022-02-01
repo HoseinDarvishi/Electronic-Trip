@@ -40,7 +40,7 @@ namespace ET.Web.Areas.Admin.Controllers
 
       public ActionResult Wait(int id)
       {
-         var result = _reqService.DoneRequest(id);
+         var result = _reqService.WaitRequest(id);
          TempData["Message"] = result.Message;
          return RedirectToAction("Index", "Requests", new { area = "Admin" });
       }

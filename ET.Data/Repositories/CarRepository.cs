@@ -63,19 +63,24 @@ namespace ET.Data.Repositories
 
       public CarVM GetDetailsById(int carId)
       {
-         return _context.Cars.Select(x => new CarVM
+         var car = _context.Cars.Include(c=>c.Driver)
+            .Select(x => new CarVM
          {
             CarId = x.CarId,
             CarName = x.CarName,
             Model = x.Model,
             Speed = x.Speed,
             IsRemoved = x.IsRemoved,
-            RegisterDate = x.RegisterDate.ToShamsi(),
+            RegisterDateEN = x.RegisterDate,
             DriverId = x.DriverId,
             DriverName = x.Driver.FullName
          })
          .AsNoTracking()
          .FirstOrDefault(x => x.CarId == carId);
+
+         car.RegisterDate = car.RegisterDateEN.ToShamsi();
+
+         return car;
       }
 
       public List<CarVM> GetByName(string carName)

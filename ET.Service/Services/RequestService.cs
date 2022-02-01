@@ -56,7 +56,7 @@ namespace ET.Service.Services
       {
          request.DetachCode = Generator.GenerateUniqCode();
          string  detachCode = _requestRepo.AddRequest(request);
-         return new OperationResult().Success(detachCode);
+         return new OperationResult().Success($"سفارش با کد رهگیری {detachCode} ثبت شد");
       }
    }
 }

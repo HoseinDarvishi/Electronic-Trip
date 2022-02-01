@@ -39,6 +39,11 @@ namespace ET.Service.Services
          return _carRepo.GetAll(search , showAll);
       }
 
+      public CarVM GetDetails(int carId)
+      {
+         return _carRepo.GetDetailsById(carId);
+      }
+
       public EditCar GetForEdit(int carId)
       {
          return _carRepo.GetForEdit(carId);

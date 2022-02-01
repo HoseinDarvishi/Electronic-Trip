@@ -29,6 +29,7 @@ namespace ET.Web.Controllers
       #endregion
 
       #region SetRequest
+      [Route("SetRequest")]
       [Authorize]
       public ActionResult SetRequest(int carId)
       {
@@ -40,19 +41,21 @@ namespace ET.Web.Controllers
             return RedirectToAction("Index", "Home");
          }
 
-         var car = _carService.GetForEdit(carId);
+         var car = _carService.GetDetails(carId);
 
          var newRequest = new AddRequest
          {
             CarId = car.CarId,
             CarName = car.CarName,
             UserId = user.UserId,
-            FullName = user.FullName
+            FullName = user.FullName,
+            DriverName = car.DriverName
          };
 
          return View(newRequest);
       }
 
+      [Route("SetRequest")]
       [HttpPost]
       [Authorize]
       public ActionResult SetRequest(AddRequest request)
