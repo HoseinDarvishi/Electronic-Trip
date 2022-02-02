@@ -18,7 +18,7 @@
    <div class="d-flex flex-column justify-content-between"
         style="height: 100vh !important">
       <div>
-         <div class="index-page-header py-3 shadow px-5 row d-flex justify-content-between text-white">
+         <div class="index-page-header py-3 shadow px-5 row d-flex justify-content-center justify-content-sm-between text-white">
 
             @if (!AuthHelper.IsAuthenticate())
             {
@@ -35,7 +35,7 @@
                </ul>
             }
 
-            <a class="h5 bg-light text-dark px-4 py-1 shadow rounded rounded-pill"
+            <a class="h5 bg-light text-dark px-4 py-1 shadow rounded rounded-pill d-none d-sm-block"
                href="/">ElecTrip</a>
          </div>
          <div class="clock text-center py-1 bg-white mx-auto shadow shadow-sm d-flex justify-content-center">

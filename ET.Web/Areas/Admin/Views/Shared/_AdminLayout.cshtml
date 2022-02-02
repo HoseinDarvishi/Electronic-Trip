@@ -14,47 +14,51 @@
 <body class="bg-light">
    <div class="d-flex flex-column justify-content-between pb-3" style="height: 100vh !important;">
       <div class="">
-         <div class="bg-primary page-header py-3 shadow px-5 row d-flex justify-content-between text-white">
-            <ul class="bg-light text-dark py-1 px-2 shadow rounded rounded-pill text-center">
+         <nav class="navbar navbar-expand-xl bg-primary page-header py-3 shadow px-2 px-sm-5 row d-flex justify-content-between text-white">
+            <ul class="navbar-brand bg-light text-dark py-1 px-2 shadow rounded rounded-pill text-center">
                <li>@AuthHelper.AuthName</li> |
                <li><a href="/Account/logout">خروج</a></li>
             </ul>
-            <ul>
-               <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="bg-light text-dark py-1 px-2 shadow rounded rounded-pill text-center">منو</span>
+            </button>
+            <ul class="collapse navbar-collapse mt-3 mt-xl-0" id="navbarSupportedContent">
+               <li class="bg-light text-dark p-1 px-3 mt-2 mt-lg-0 mr-xl-5 shadow rounded rounded-pill">
+               <li class="bg-light text-dark p-1 px-3 mt-2 mt-lg-0 mr-xl-5 shadow rounded rounded-pill">
                   <a href="/Home/Index">صفحه اصلی سایت</a>
                </li>
                @if (AuthHelper.HasPermission(AppPermissions.ListReports))
                {
-                  <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
+                  <li class="bg-light text-dark p-1 px-3 mt-2 mt-xl-0 shadow rounded rounded-pill">
                      <a href="@Url.Action("Index","Home",new {area = "Admin"})">گزارشات</a>
                   </li>
                }
                @if (AuthHelper.HasPermission(AppPermissions.ListUser))
                {
-                  <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
+                  <li class="bg-light text-dark p-1 px-3 mt-2 mt-xl-0 shadow rounded rounded-pill">
                      <a href="@Url.Action("Index","Users",new {area="Admin"})">کاربران</a>
                   </li>
                }
                @if (AuthHelper.HasPermission(AppPermissions.ListRole))
                {
-                  <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
+                  <li class="bg-light text-dark p-1 px-3 mt-2 mt-xl-0 shadow rounded rounded-pill">
                      <a href="@Url.Action("Index","Roles",new {area = "Admin"})">نقش ها</a>
                   </li>
                }
                @if (AuthHelper.HasPermission(AppPermissions.ListRequest))
                {
-                  <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
+                  <li class="bg-light text-dark p-1 px-3 mt-2 mt-xl-0 shadow rounded rounded-pill">
                      <a href="@Url.Action("Index","Requests",new {area = "Admin"})">درخواستها</a>
                   </li>
                }
                @if (AuthHelper.HasPermission(AppPermissions.ListCar))
                {
-                  <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
+                  <li class="bg-light text-dark p-1 px-3 mt-2 mt-xl-0 shadow rounded rounded-pill">
                      <a href="@Url.Action("Index","Cars",new {area = "Admin"})">خودروها</a>
                   </li>
                }
             </ul>
-         </div>
+         </nav>
          <div>
             <div class="pt-2 container mx-auto">
 
@@ -69,6 +73,7 @@
    <script src="~/Scripts/jquery-3.4.1.js"></script>
    <script src="~/Scripts/jquery.validate.js"></script>
    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+   <script src="~/Scripts/bootstrap.min.js"></script>
 
    @RenderSection("Scripts",false)
 
