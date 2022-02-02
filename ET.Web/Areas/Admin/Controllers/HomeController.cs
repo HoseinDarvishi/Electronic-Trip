@@ -18,7 +18,7 @@ namespace ET.Web.Areas.Admin.Controllers
       } 
       #endregion
 
-      [AuthFilter(AppPermissions.ListUser)]
+      [AuthFilter(AppPermissions.ListReports)]
       public ActionResult Index()
       {
          var reportAgg = new Dictionary<string, int>

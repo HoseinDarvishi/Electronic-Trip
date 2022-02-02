@@ -1,22 +1,28 @@
-﻿@model Dictionary<string , int>
+﻿@model Dictionary<string, int>
 @using ET.Tools
+@using ET.Web.Auth
+@using ET.Constracts.PermissionContracts
+
 @{
    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
    ViewBag.Title = "پنل مدیریت";
 }
 
-<div class="reports row">
+@if (AuthHelper.HasPermission(AppPermissions.ListReports))
+{
+   <div class="reports row">
 
-   @foreach (var report in Model)
-   {
-      <div class="col-md-4 p-3">
-         <div class="rounded rounded-2 shadow p-3 bg-white report-card">
-            <p class="text-right">@report.Key : </p>
-            <h3 class="my-3 text-center">@report.Value</h3>
-            <hr class="border border-light">
-            <p class="mt-2"><small class="text-muted">تاریخ بروزرسانی : @DateTime.Now.ToShamsi()</small></p>
+      @foreach (var report in Model)
+      {
+         <div class="col-md-4 p-3">
+            <div class="rounded rounded-2 shadow p-3 bg-white report-card">
+               <p class="text-right">@report.Key : </p>
+               <h3 class="my-3 text-center">@report.Value</h3>
+               <hr class="border border-light">
+               <p class="mt-2"><small class="text-muted">تاریخ بروزرسانی : @DateTime.Now.ToShamsi()</small></p>
+            </div>
          </div>
-      </div>
-   }
+      }
 
-</div>
+   </div>
+}

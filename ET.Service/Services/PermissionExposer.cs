@@ -24,7 +24,9 @@ namespace ET.Service.Services
              new PermissionVM(AppPermissions.RestoreCar,"فعالسازی اتومبیل"),
              new PermissionVM(AppPermissions.ListRequest,"مشاهده لیست درخواست ها"),
              new PermissionVM(AppPermissions.DoneRequest,"اتمام موفق درخواست"),
-             new PermissionVM(AppPermissions.CancelRequest,"لغو درخواست")
+             new PermissionVM(AppPermissions.CancelRequest,"لغو درخواست"),
+             new PermissionVM(AppPermissions.WaitRequest,"انتظار درخواست"),
+             new PermissionVM(AppPermissions.ListReports,"مشاهده گزارشات")
          };
       }
    }

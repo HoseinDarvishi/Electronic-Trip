@@ -43,7 +43,7 @@ namespace ET.Web.Areas.Admin.Controllers
          return RedirectToAction("Index", "Requests", new { area = "Admin" });
       }
 
-      [AuthFilter(AppPermissions.CancelRequest)]
+      [AuthFilter(AppPermissions.WaitRequest)]
       public ActionResult Wait(int id)
       {
          var result = _reqService.WaitRequest(id);

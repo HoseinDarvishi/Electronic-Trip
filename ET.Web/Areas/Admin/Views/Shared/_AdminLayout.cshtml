@@ -1,5 +1,5 @@
 ﻿@using ET.Web.Auth 
-
+@using ET.Constracts.PermissionContracts
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,17 +21,38 @@
             </ul>
             <ul>
                <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
-                  <a href="@Url.Action("Index","Users",new {area="Admin"})">کاربران</a>
+                  <a href="/Home/Index">صفحه اصلی سایت</a>
                </li>
-               <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
-                  <a href="@Url.Action("Index","Roles",new {area = "Admin"})">نقش ها</a>
-               </li>
-               <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
-                  <a href="@Url.Action("Index","Requests",new {area = "Admin"})">درخواستها</a>
-               </li>
-               <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
-                  <a href="@Url.Action("Index","Cars",new {area = "Admin"})">خودروها</a>
-               </li>
+               @if (AuthHelper.HasPermission(AppPermissions.ListReports))
+               {
+                  <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
+                     <a href="@Url.Action("Index","Home",new {area = "Admin"})">گزارشات</a>
+                  </li>
+               }
+               @if (AuthHelper.HasPermission(AppPermissions.ListUser))
+               {
+                  <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
+                     <a href="@Url.Action("Index","Users",new {area="Admin"})">کاربران</a>
+                  </li>
+               }
+               @if (AuthHelper.HasPermission(AppPermissions.ListRole))
+               {
+                  <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
+                     <a href="@Url.Action("Index","Roles",new {area = "Admin"})">نقش ها</a>
+                  </li>
+               }
+               @if (AuthHelper.HasPermission(AppPermissions.ListRequest))
+               {
+                  <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
+                     <a href="@Url.Action("Index","Requests",new {area = "Admin"})">درخواستها</a>
+                  </li>
+               }
+               @if (AuthHelper.HasPermission(AppPermissions.ListCar))
+               {
+                  <li class="bg-light text-dark p-1 px-3 shadow rounded rounded-pill">
+                     <a href="@Url.Action("Index","Cars",new {area = "Admin"})">خودروها</a>
+                  </li>
+               }
             </ul>
          </div>
          <div>
