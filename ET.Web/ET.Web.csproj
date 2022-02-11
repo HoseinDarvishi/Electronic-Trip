@@ -164,6 +164,7 @@
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Auth\AuthFilter.cs" />
     <Compile Include="Auth\AuthHelper.cs" />
+    <Compile Include="Auth\SafeGenerator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">

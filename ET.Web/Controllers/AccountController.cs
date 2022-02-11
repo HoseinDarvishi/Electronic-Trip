@@ -1,7 +1,9 @@
 ﻿using ET.Constracts.RoleConstracts;
 using ET.Constracts.UserContracts;
+using ET.Web.Auth;
 using Newtonsoft.Json;
 using System;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -69,16 +71,22 @@ namespace ET.Web.Controllers
          if (!result.IsSuccess)
             return View(login);
 
-         // Set Authentication Cookie
+         #region Set Auth Cookies
          var permissionCodes = _roleService.GetPermissionCodesByUserName(login.UserName);
 
          if (permissionCodes != null)
          {
             string serializePermissions = JsonConvert.SerializeObject(permissionCodes);
-            FormsAuthentication.SetAuthCookie($"{login.UserName}|H|{serializePermissions}", true, "/");
+
+            var permissionCookie = new HttpCookie("PCl0-AIOP1");
+            permissionCookie.Value = serializePermissions.Protect("UserPermCookie");
+            permissionCookie.Expires = DateTime.Now.AddDays(30);
+
+            Response.Cookies.Add(permissionCookie);
          }
-         else
-            FormsAuthentication.SetAuthCookie($"{login.UserName}",true,"/");
+
+         FormsAuthentication.SetAuthCookie($"{login.UserName}", true, "/"); 
+         #endregion
 
          return RedirectToAction("Index", "Home");
       }

@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Web;
 
@@ -12,8 +11,7 @@ namespace ET.Web.Auth
          get
          {
             if (!IsAuthenticate()) return null;
-            string cookieVal = HttpContext.Current.User.Identity.Name;
-            return cookieVal.Split(new[] { "|H|" }, StringSplitOptions.None)[0];
+            return HttpContext.Current.User.Identity.Name;
          }
       }
 
@@ -22,9 +20,11 @@ namespace ET.Web.Auth
          get
          {
             if (!IsAuthenticate()) return null;
-            var cookieVal = HttpContext.Current.User.Identity.Name;
-            string permCodes = cookieVal.Split(new[] { "|H|" },StringSplitOptions.None)[1];
-            return JsonConvert.DeserializeObject<List<int>>(permCodes);
+
+            string cookieValEncrypted = HttpContext.Current.Request.Cookies["PCl0-AIOP1"].Value;
+            string cookieValDecrypted = cookieValEncrypted.UnProtect<string>("UserPermCookie");
+
+            return JsonConvert.DeserializeObject<List<int>>(cookieValDecrypted);
          }
       }
 

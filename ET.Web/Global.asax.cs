@@ -12,13 +12,14 @@ namespace ET.Web
    {
       protected void Application_Start()
       {
-         // Dependency Injection By Autofac
+         #region Dependency Injection Configs By Autofac
          var autofac = new ETBootstrapper();
          autofac.Container().RegisterControllers(typeof(MvcApplication).Assembly);
          autofac.Container().RegisterFilterProvider();
          autofac.Container().RegisterSource(new ViewRegistrationSource());
          autofac.Configure(ConfigurationManager.ConnectionStrings["ElectronicTrip"].ConnectionString);
-         autofac.Resolve();
+         autofac.Resolve(); 
+         #endregion
 
          AreaRegistration.RegisterAllAreas();
          FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

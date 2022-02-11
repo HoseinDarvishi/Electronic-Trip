@@ -85,7 +85,8 @@ namespace ET.Data.Repositories
       public void SetPermissions(int roleId, List<Permission> permissions)
       {
          var role = GetById(roleId);
-
+         role.Permissions.Clear();
+         Save();
          role.Permissions = permissions;
          Save();
       }
