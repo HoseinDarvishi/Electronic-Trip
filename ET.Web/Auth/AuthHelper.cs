@@ -28,7 +28,12 @@ namespace ET.Web.Auth
          }
       }
 
-      public static bool IsAuthenticate() => HttpContext.Current.User.Identity.IsAuthenticated;
+      public static bool IsAuthenticate()
+      {
+         if (HttpContext.Current.User == null || !HttpContext.Current.User.Identity.IsAuthenticated)
+            return false;
+         return true;
+      }
 
       public static bool HasPermission(int permissionCode) 
       {

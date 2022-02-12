@@ -78,7 +78,7 @@ namespace ET.Web.Controllers
          {
             string serializePermissions = JsonConvert.SerializeObject(permissionCodes);
 
-            var permissionCookie = new HttpCookie("PCl0-AIOP1");
+            var permissionCookie = new HttpCookie("PCl0-AIOP1") { Secure = true , HttpOnly = true};
             permissionCookie.Value = serializePermissions.Protect("UserPermCookie");
             permissionCookie.Expires = DateTime.Now.AddDays(30);
 
@@ -93,6 +93,7 @@ namespace ET.Web.Controllers
       #endregion
 
       #region Logout
+      [Route("Logout")]
       public RedirectToRouteResult Logout()
       {
          if (User.Identity.IsAuthenticated)

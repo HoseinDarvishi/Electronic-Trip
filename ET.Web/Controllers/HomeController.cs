@@ -70,5 +70,13 @@ namespace ET.Web.Controllers
          return RedirectToAction("Index", "Home");
       }
       #endregion
+
+      #region Not Found (404)
+      [Route("NotFound")]
+      public ViewResult NotFound()
+      {
+         return View("~/Views/Shared/NotFound.cshtml");
+      } 
+      #endregion
    }
 }
